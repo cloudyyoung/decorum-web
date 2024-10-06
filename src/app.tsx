@@ -7,11 +7,13 @@ import axios from "axios";
 import Home from "./pages/home";
 import Join from "./pages/join";
 import Lobby from "./pages/lobby";
+import Game from "./pages/game/game";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/join", element: <Join /> },
-  { path: "/lobby", element: <Lobby /> }
+  { path: "/lobby", element: <Lobby /> },
+  { path: "/game", element: <Game /> },
 ]);
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
