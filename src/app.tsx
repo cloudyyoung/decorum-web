@@ -4,10 +4,12 @@ import {
 } from "react-router-dom";
 
 import Home from "./pages/home";
+import Join from "./pages/join";
 import Lobby from "./pages/lobby";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
+  { path: "/join", element: <Join /> },
   { path: "/lobby", element: <Lobby /> }
 ]);
 
