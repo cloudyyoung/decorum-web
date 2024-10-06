@@ -2,6 +2,7 @@ import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
+import axios from "axios";
 
 import Home from "./pages/home";
 import Join from "./pages/join";
@@ -12,6 +13,12 @@ const router = createBrowserRouter([
   { path: "/join", element: <Join /> },
   { path: "/lobby", element: <Lobby /> }
 ]);
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+axios.defaults.baseURL = API_BASE_URL;
+axios.defaults.headers.post["Content-Type"] = "application/json";
+
 
 export const App = () => {
   return (

@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { useLocation } from "react-router-dom";
+
 import P1 from "/src/assets/objects/DEC-Player-1.png"
 import P2 from "/src/assets/objects/DEC-Player-2.png"
 import P3 from "/src/assets/objects/DEC-Player-3.png"
@@ -37,6 +39,9 @@ const PlayerButton = ({ player, isSelected, setSelectedPlayer }: PlayerButtonPro
 
 export const Lobby = () => {
   const [selectedPlayer, setSelectedPlayer] = useState<number | null>(null)
+  const location = useLocation();
+  const { state } = location;
+  const game = state;
 
   return (
     <>
@@ -45,10 +50,10 @@ export const Lobby = () => {
         <p className="subtitle">Share Game ID to invite your friends</p>
 
         <div className="">
-          <p className="">Game ID: 6701e7511c5b88a00938657d</p>
-          <p className="">Number of players: 4</p>
-          <p className="">Game difficulty: 4</p>
-          <p className="">Game seed: AHFN4NS</p>
+          <p className="">Game ID: {game.id}</p>
+          <p className="">Number of players: {game.num_of_players}</p>
+          <p className="">Game difficulty: {game.total_difficulty_points}</p>
+          <p className="">Game seed: {game.seed}</p>
         </div>
 
         <div className="mt-6">
