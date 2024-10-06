@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import P1 from "/src/assets/objects/DEC-Player-1.png"
 import P2 from "/src/assets/objects/DEC-Player-2.png"
@@ -38,10 +38,14 @@ const PlayerButton = ({ player, isSelected, setSelectedPlayer }: PlayerButtonPro
 }
 
 export const Lobby = () => {
-  const [selectedPlayer, setSelectedPlayer] = useState<number | null>(null)
+  const navigate = useNavigate()
   const location = useLocation();
+  const [selectedPlayer, setSelectedPlayer] = useState<number | null>(null)
+
   const { state } = location;
-  const game = state;
+  const game = state
+
+  const onExit = () => navigate("/")
 
   return (
     <>
@@ -67,7 +71,7 @@ export const Lobby = () => {
         </div>
 
         <div className="mt-6 buttons">
-          <button className="button is-medium is-fullwidth is-text">Exit</button>
+          <button className="button is-medium is-fullwidth is-text" onClick={onExit}>Exit</button>
           <button className="button is-info is-large is-fullwidth" disabled={selectedPlayer === null}>Enter Game</button>
         </div>
       </section>
