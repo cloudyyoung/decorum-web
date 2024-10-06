@@ -1,3 +1,5 @@
+import { COLORS } from "../../constants"
+
 import BlueAntiqueCurio from "/src/assets/blue-antique-curio.png"
 import BlueModernLamp from "/src/assets/blue-modern-lamp.png"
 import BlueRetroWallHanging from "/src/assets/blue-retro-wh.png"
@@ -24,13 +26,6 @@ export interface RoomSetupProps {
   }
 }
 
-const WALL_COLORS: { [key: string]: string } = {
-  "blue": "#0077CF",
-  "green": "#05A82E",
-  "red": "#ED2E38",
-  "yellow": "#FFC72C",
-}
-
 const OBJECT_IMAGES: { [key: string]: string } = {
   "blue antique curio": BlueAntiqueCurio,
   "blue modern lamp": BlueModernLamp,
@@ -48,7 +43,7 @@ const OBJECT_IMAGES: { [key: string]: string } = {
 
 export const RoomSetup = ({ name, setup }: RoomSetupProps) => {
   const { wall_color, lamp, curio, wall_hanging } = setup
-  const wallColor = WALL_COLORS[wall_color]
+  const wallColor = COLORS[wall_color]
   const lampImage = lamp ? OBJECT_IMAGES[lamp] : EmptyLamp
   const curioImage = curio ? OBJECT_IMAGES[curio] : EmptyCurio
   const wallHangingImage = wall_hanging ? OBJECT_IMAGES[wall_hanging] : EmptyWallHanging
