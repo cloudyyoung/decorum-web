@@ -1,6 +1,6 @@
 ## Décorum-Gen
 This is an unofficial web-based scnearios generator for the board game Décorum.
-Visit: [Décorum-Gen](https://decorum-web.onrender.com/)
+Visit: [Décorum-Gen](https://decorum.cloudyyoung.com/)
 
 ## Dependencies
 - [decorum-server](https://github.com/cloudyyoung/decorum-server)
