@@ -56,10 +56,13 @@ const decorateCondition = (condition: string) => {
   while (remainingText.length > 0) {
     let found = false;
 
-    for (const keyword in sortKeywords(KEYWORD_DECORATIONS)) {
+    for (const keyword of sortKeywordDecorations(KEYWORD_DECORATIONS)) {
       if (remainingText.toLowerCase().startsWith(keyword)) {
         const matchedKeyword = remainingText.substring(0, keyword.length);
-        parts.push(<span>{matchedKeyword}{KEYWORD_DECORATIONS[keyword]}</span>);
+        const decoration = KEYWORD_DECORATIONS[keyword];
+        parts.push(
+          <span>{matchedKeyword}{decoration}</span>
+        );
         remainingText = remainingText.substring(keyword.length);
         found = true;
         break;
@@ -70,9 +73,7 @@ const decorateCondition = (condition: string) => {
       if (remainingText.toLowerCase().startsWith(color)) {
         const colorHex = COLORS[color]
         parts.push(
-          <>
-            <span className="has-text-weight-bold" style={{ color: colorHex }}>{color}</span>
-          </>
+          <span className="font-extrabold" style={{ color: colorHex }}>{color}</span>
         );
         remainingText = remainingText.substring(color.length);
         found = true;
@@ -89,10 +90,10 @@ const decorateCondition = (condition: string) => {
   return parts
 }
 
-const sortKeywords = (keyword_decorations: KeywordDecorations) => {
+
+const sortKeywordDecorations = (keyword_decorations: KeywordDecorations) => {
   return Object.keys(keyword_decorations).sort((a, b) => b.length - a.length)
 }
-
 
 interface KeywordDecorations {
   [key: string]: ReactNode
@@ -141,4 +142,11 @@ const KEYWORD_DECORATIONS: KeywordDecorations = {
       <ConditionIcon image={PaintBlue} name="blue paint" />
     </>
   ),
+  "each object type": (
+    <>
+      <ConditionIcon image={WallHanging} name="wall hanging" />
+      <ConditionIcon image={Curio} name="curio" />
+      <ConditionIcon image={Lamp} name="lamp" />
+    </>
+  )
 }
