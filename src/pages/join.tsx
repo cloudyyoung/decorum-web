@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { Heading, Subheading } from "../components/heading"
 import { Input } from "../components/input"
 import { Button } from "../components/button"
-import { ArrowRightIcon } from "@heroicons/react/16/solid"
+import { ArrowUpRightIcon } from "@heroicons/react/16/solid"
 import GameContext from "../context/game_context"
 import { Alert, AlertActions, AlertDescription, AlertTitle } from "../components/alert"
 
@@ -57,7 +57,7 @@ const Join = () => {
             <Button color="white" disabled={isGettingGame} href="/">Return</Button>
             <Button disabled={gameId === "" || isGettingGame} onClick={onEnterGame}>
               Join Game
-              <ArrowRightIcon />
+              <ArrowUpRightIcon />
             </Button>
           </div>
         </div>
