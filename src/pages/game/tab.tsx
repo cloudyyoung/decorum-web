@@ -1,6 +1,8 @@
 import clsx from "clsx"
 import { useContext } from "react"
+import { XMarkIcon } from "@heroicons/react/24/outline"
 import GameContext from "../../context/game_context"
+import { Button } from "../../components/button"
 
 export type TabOption = "setup" | "conditions"
 
@@ -27,40 +29,48 @@ export const Tab = ({ tab, setTab }: TabProps) => {
   const [playerBgColor, playerTextColor] = getPlayerColor()
 
   return (
-    <nav aria-label="Tabs" className="isolate flex divide-x divide-gray-200 rounded-lg shadow-lg w-48 mt-3 mb-6">
-      <button
-        className={clsx(
-          tab === "setup" ? playerBgColor : 'text-gray-600 hover:text-gray-700',
-          'rounded-l-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-2.5 text-center text-sm font-medium hover:bg-gray-50 focus:z-10',
-        )}
-        onClick={() => setTab("setup")}
-      >
-        <span className={clsx(tab === "setup" ? playerTextColor : '')}>Setup</span>
-        <span
-          aria-hidden="true"
+    <div className="relative mt-3 mb-6 w-full isolate flex justify-center items-center">
+      <div className="absolute left-0">
+        <Button plain href="/">
+          <XMarkIcon />
+        </Button>
+      </div>
+
+      <nav aria-label="Tabs" className="isolate flex divide-x divide-gray-200 rounded-lg shadow-lg w-[11rem]">
+        <button
           className={clsx(
-            tab === "setup" ? playerBgColor : 'bg-transparent',
-            'absolute inset-x-0 bottom-0 h-0.5',
+            tab === "setup" ? playerBgColor : 'text-gray-600 hover:text-gray-700',
+            'rounded-l-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-2.5 text-center text-sm font-medium hover:bg-gray-50 focus:z-10',
           )}
-        />
-      </button>
-      <button
-        className={clsx(
-          tab === "conditions" ? playerBgColor : 'text-gray-600 hover:text-gray-700',
-          'rounded-r-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-2.5 text-center text-sm font-medium hover:bg-gray-50 focus:z-10',
-        )}
-        onClick={() => setTab("conditions")}
-      >
-        <span className={clsx(tab === "conditions" ? playerTextColor : '')}>Conditions</span>
-        <span
-          aria-hidden="true"
+          onClick={() => setTab("setup")}
+        >
+          <span className={clsx(tab === "setup" ? playerTextColor : '')}>Setup</span>
+          <span
+            aria-hidden="true"
+            className={clsx(
+              tab === "setup" ? playerBgColor : 'bg-transparent',
+              'absolute inset-x-0 bottom-0 h-0.5',
+            )}
+          />
+        </button>
+        <button
           className={clsx(
-            tab === "conditions" ? playerBgColor : 'bg-transparent',
-            'absolute inset-x-0 bottom-0 h-0.5',
+            tab === "conditions" ? playerBgColor : 'text-gray-600 hover:text-gray-700',
+            'rounded-r-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-2.5 text-center text-sm font-medium hover:bg-gray-50 focus:z-10',
           )}
-        />
-      </button>
-    </nav>
+          onClick={() => setTab("conditions")}
+        >
+          <span className={clsx(tab === "conditions" ? playerTextColor : '')}>Conditions</span>
+          <span
+            aria-hidden="true"
+            className={clsx(
+              tab === "conditions" ? playerBgColor : 'bg-transparent',
+              'absolute inset-x-0 bottom-0 h-0.5',
+            )}
+          />
+        </button>
+      </nav>
+    </div>
   )
 }
 
