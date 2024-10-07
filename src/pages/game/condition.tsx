@@ -16,7 +16,7 @@ export const Condition = ({ condition }: ConditionProps) => {
   const parts = decorateCondition(condition)
 
   return (
-    <p className="font-serif text-[0.74rem] leading-4.5">
+    <p className="font-serif text-[0.74rem] leading-[1.2rem]">
       {parts}
     </p>
   )
@@ -36,7 +36,10 @@ const decorateCondition = (condition: string) => {
         const matchedKeyword = remainingText.substring(0, keyword.length);
         const decoration = KEYWORD_DECORATIONS[keyword];
         parts.push(
-          <span>{matchedKeyword} {decoration}</span>
+          <>
+            <span className="font-bold">{matchedKeyword} </span>
+            <span>{decoration}</span>
+          </>
         );
         remainingText = remainingText.substring(keyword.length);
         found = true;
@@ -48,7 +51,7 @@ const decorateCondition = (condition: string) => {
       if (remainingText.toLowerCase().startsWith(color)) {
         const colorHex = COLORS[color]
         parts.push(
-          <span className="font-extrabold" style={{ color: colorHex }}>{color}</span>
+          <span className="font-bold" style={{ color: colorHex }}>{color}</span>
         );
         remainingText = remainingText.substring(color.length);
         found = true;
@@ -101,6 +104,10 @@ const KEYWORD_DECORATIONS: KeywordDecorations = {
   "painted green": <ConditionIcon image={ASSETS.PaintGreen} name="painted green" />,
   "painted red": <ConditionIcon image={ASSETS.PaintRed} name="painted red" />,
   "painted yellow": <ConditionIcon image={ASSETS.PaintYellow} name="painted yellow" />,
+  "blue room": <ConditionIcon image={ASSETS.PaintBlue} name="painted blue" />,
+  "green room": <ConditionIcon image={ASSETS.PaintGreen} name="painted green" />,
+  "red room": <ConditionIcon image={ASSETS.PaintRed} name="painted red" />,
+  "yellow room": <ConditionIcon image={ASSETS.PaintYellow} name="painted yellow" />,
   "each floor": (
     <>
       <span>(</span>
