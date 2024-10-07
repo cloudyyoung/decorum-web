@@ -30,7 +30,7 @@ import PaintYellow from "/src/assets/paint-yellow.png"
 
 
 const ConditionIcon = ({ image, name }: { image: string, name: string }) => {
-  return <img src={image} alt={name} className="h-4 inline ml-1 mb-[0.08rem]" />
+  return <img src={image} alt={name} className="h-4 inline -mt-[0.16rem]" />
 }
 
 export interface ConditionProps {
@@ -61,7 +61,7 @@ const decorateCondition = (condition: string) => {
         const matchedKeyword = remainingText.substring(0, keyword.length);
         const decoration = KEYWORD_DECORATIONS[keyword];
         parts.push(
-          <span>{matchedKeyword}{decoration}</span>
+          <span>{matchedKeyword} {decoration}</span>
         );
         remainingText = remainingText.substring(keyword.length);
         found = true;
@@ -126,12 +126,23 @@ const KEYWORD_DECORATIONS: KeywordDecorations = {
   "paint green": <ConditionIcon image={PaintGreen} name="paint green" />,
   "paint red": <ConditionIcon image={PaintRed} name="paint red" />,
   "paint yellow": <ConditionIcon image={PaintYellow} name="paint yellow" />,
+  "each floor": (
+    <>
+      <span>(</span>
+      <ConditionIcon image={Upstairs} name="upstairs" />
+      <span> & </span>
+      <ConditionIcon image={Downstairs} name="downstairs" />
+      <span>)</span>
+    </>
+  ),
   "all 4 styles": (
     <>
+      <span>(</span>
       <ConditionIcon image={Modern} name="modern" />
       <ConditionIcon image={Antique} name="antique" />
       <ConditionIcon image={Retro} name="retro" />
       <ConditionIcon image={Unusual} name="unusual" />
+      <span>)</span>
     </>
   ),
   "all 4 wall colors": (
@@ -142,11 +153,30 @@ const KEYWORD_DECORATIONS: KeywordDecorations = {
       <ConditionIcon image={PaintBlue} name="blue paint" />
     </>
   ),
-  "each object type": (
+  "all 4 wall hangings": (
     <>
       <ConditionIcon image={WallHanging} name="wall hanging" />
-      <ConditionIcon image={Curio} name="curio" />
+    </>
+  ),
+  "each object type": (
+    <>
+      <span>(</span>
+      <ConditionIcon image={WallHanging} name="wall hanging" />
+      <span>, </span>
       <ConditionIcon image={Lamp} name="lamp" />
+      <span>, or </span>
+      <ConditionIcon image={Curio} name="curio" />
+      <span>)</span>
+    </>
+  ),
+  "painted each color": (
+    <>
+      <span>(</span>
+      <ConditionIcon image={PaintRed} name="red paint" />
+      <ConditionIcon image={PaintYellow} name="yellow paint" />
+      <ConditionIcon image={PaintGreen} name="green paint" />
+      <ConditionIcon image={PaintBlue} name="blue paint" />
+      <span>)</span>
     </>
   )
 }
