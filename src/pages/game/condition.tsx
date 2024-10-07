@@ -33,6 +33,19 @@ const ConditionIcon = ({ image, name }: { image: string, name: string }) => {
   return <img src={image} alt={name} className="h-4 inline ml-1 mb-[0.08rem]" />
 }
 
+export interface ConditionProps {
+  condition: string
+}
+
+export const Condition = ({ condition }: ConditionProps) => {
+  const parts = decorateCondition(condition)
+
+  return (
+    <p className="font-serif text-[0.74rem] leading-4.5">
+      {parts}
+    </p>
+  )
+}
 
 const KEYWORD_IMAGES: { [key: string]: ReactNode } = {
   "antique": <ConditionIcon image={Antique} name="antique" />,
@@ -79,11 +92,7 @@ const KEYWORD_IMAGES: { [key: string]: ReactNode } = {
   ),
 }
 
-export interface ConditionProps {
-  condition: string
-}
-
-export const Condition = ({ condition }: ConditionProps) => {
+const decorateCondition = (condition: string) => {
   const parts = []
 
   let remainingText = condition;
@@ -120,11 +129,7 @@ export const Condition = ({ condition }: ConditionProps) => {
     }
   }
 
-  return (
-    <p className="font-serif text-[0.74rem] leading-4.5">
-      {parts}
-    </p>
-  )
+  return parts
 }
 
 export default Condition
