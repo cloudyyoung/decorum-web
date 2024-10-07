@@ -86,7 +86,7 @@ export const Lobby = () => {
 
   return (
     <>
-      <section className="p-4">
+      <section className="p-4 h-screen">
         <Heading>Game Information</Heading>
         <Subheading>Share Game ID to invite your friends</Subheading>
 
@@ -107,17 +107,17 @@ export const Lobby = () => {
             }
           </div>
         </div>
-
-        <div className="absolute left-0 bottom-0 w-full p-4">
-          <div className="flex gap-2 mt-8 justify-between max-w-screen-sm mx-auto">
-            <Button color="white" href="/">Leave</Button>
-            <Button disabled={selectedPlayer === null} onClick={onEnterGame}>
-              Enter Game
-              <ArrowRightIcon />
-            </Button>
-          </div>
-        </div>
       </section>
+
+      <div className="sticky bottom-0 left-0 right-0 p-4">
+        <div className="flex gap-2 justify-between max-w-screen-sm mx-auto">
+          <Button color="white" href="/">Leave</Button>
+          <Button disabled={selectedPlayer === null} onClick={onEnterGame}>
+            Enter Game
+            <ArrowRightIcon />
+          </Button>
+        </div>
+      </div>
     </>
   )
 }
