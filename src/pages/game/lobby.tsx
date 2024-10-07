@@ -13,13 +13,14 @@ import { Button } from "../../components/button";
 import { useEffectOnce } from "react-use";
 import axios from "axios";
 import { ArrowRightIcon } from "@heroicons/react/16/solid";
+import { Game } from "./context";
 
 const PLAYER_IMAGES = [P1, P2, P3, P4]
 
 interface PlayerButtonProps {
   player: number
   isSelected: boolean
-  setSelectedPlayer?: (player: number | null) => void
+  setSelectedPlayer?: (player: number | undefined) => void
 }
 
 const PlayerButton = ({ player, isSelected, setSelectedPlayer }: PlayerButtonProps) => {
@@ -28,7 +29,7 @@ const PlayerButton = ({ player, isSelected, setSelectedPlayer }: PlayerButtonPro
 
   const onClick = () => {
     if (isSelected) {
-      setSelectedPlayer?.(null)
+      setSelectedPlayer?.(undefined)
     } else {
       setSelectedPlayer?.(player)
     }
@@ -52,19 +53,12 @@ const PlayerButton = ({ player, isSelected, setSelectedPlayer }: PlayerButtonPro
   )
 }
 
-interface Game {
-  id: string
-  num_of_players: number
-  total_difficulty_points: number
-  seed: string
-}
-
 export const Lobby = () => {
   const location = useLocation();
   const navigate = useNavigate()
   const { gameId } = useParams();
-  const [selectedPlayer, setSelectedPlayer] = useState<number | null>(null)
-  const [game, setGame] = useState<Game | null>(null)
+  const [selectedPlayer, setSelectedPlayer] = useState<number | undefined>(undefined)
+  const [game, setGame] = useState<Game | undefined>(undefined)
 
   const { state } = location;
 

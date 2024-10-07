@@ -3,7 +3,6 @@ import Tab, { TabOption } from "./tab"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import { useEffectOnce } from "react-use"
 
-
 export const GameLayout = () => {
   const location = useLocation()
   const navigate = useNavigate()

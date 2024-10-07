@@ -1,4 +1,5 @@
 import { COLORS } from "../../constants"
+import { Room } from "./context"
 
 import BlueAntiqueCurio from "/src/assets/blue-antique-curio.png"
 import BlueModernLamp from "/src/assets/blue-modern-lamp.png"
@@ -16,15 +17,7 @@ import EmptyLamp from "/src/assets/empty-lamp.png"
 import EmptyCurio from "/src/assets/empty-curio.png"
 import EmptyWallHanging from "/src/assets/empty-wh.png"
 
-export interface RoomSetupProps {
-  name: string
-  setup: {
-    wall_color: string
-    lamp: string | null
-    curio: string | null
-    wall_hanging: string | null
-  }
-}
+export type RoomSetupProps = Room
 
 const OBJECT_IMAGES: { [key: string]: string } = {
   "blue antique curio": BlueAntiqueCurio,
