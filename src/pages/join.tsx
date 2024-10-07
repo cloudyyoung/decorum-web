@@ -12,7 +12,6 @@ const Join = () => {
   const [isGettingGame, setIsGettingGame] = useState<boolean>(false)
   const [, setGameIdLocal] = useLocalStorage("gameId", "")
 
-  const onReturn = () => navigate("/")
   const onEnterGame = async () => {
     try {
       setIsGettingGame(true)
@@ -43,7 +42,7 @@ const Join = () => {
           </div>
 
           <div className="flex gap-2 mt-4">
-            <Button color="white" disabled={isGettingGame} onClick={onReturn}>Return</Button>
+            <Button color="white" disabled={isGettingGame} href="/">Return</Button>
             <Button disabled={gameId === "" || isGettingGame} onClick={onEnterGame}>Enter Game</Button>
           </div>
         </div>

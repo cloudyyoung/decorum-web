@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import clsx from 'clsx'
 
 import P1 from "/src/assets/objects/DEC-Player-1.png"
@@ -51,12 +51,18 @@ const PlayerButton = ({ player, isSelected, setSelectedPlayer }: PlayerButtonPro
   )
 }
 
+interface Game {
+  id: string
+  num_of_players: number
+  total_difficulty_points: number
+  seed: string
+}
+
 export const Lobby = () => {
-  const navigate = useNavigate()
   const location = useLocation();
   const { gameId } = useParams();
   const [selectedPlayer, setSelectedPlayer] = useState<number | null>(null)
-  const [game, setGame] = useState(null)
+  const [game, setGame] = useState<Game | null>(null)
 
   const { state } = location;
 
@@ -75,8 +81,6 @@ export const Lobby = () => {
   if (!game) {
     return null
   }
-
-  const onExit = () => navigate("/")
 
   return (
     <>
@@ -102,7 +106,7 @@ export const Lobby = () => {
         </div>
 
         <div className="flex gap-2 mt-4">
-          <Button color="white" onClick={onExit}>Exit</Button>
+          <Button color="white" href="/">Exit</Button>
           <Button disabled={selectedPlayer === null}>Enter Game</Button>
         </div>
       </section>
