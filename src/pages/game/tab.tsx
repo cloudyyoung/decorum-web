@@ -27,7 +27,7 @@ export const Tab = ({ tab, setTab }: TabProps) => {
   const [playerBgColor, playerTextColor] = getPlayerColor()
 
   return (
-    <nav aria-label="Tabs" className="isolate flex divide-x divide-gray-200 rounded-lg shadow-lg w-48 my-4">
+    <nav aria-label="Tabs" className="isolate flex divide-x divide-gray-200 rounded-lg shadow-lg w-48 mt-3 mb-6">
       <button
         className={clsx(
           tab === "setup" ? playerBgColor : 'text-gray-600 hover:text-gray-700',
