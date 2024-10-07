@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import clsx from 'clsx'
 
 import P1 from "/src/assets/objects/DEC-Player-1.png"
@@ -60,6 +60,7 @@ interface Game {
 
 export const Lobby = () => {
   const location = useLocation();
+  const navigate = useNavigate()
   const { gameId } = useParams();
   const [selectedPlayer, setSelectedPlayer] = useState<number | null>(null)
   const [game, setGame] = useState<Game | null>(null)
@@ -80,6 +81,10 @@ export const Lobby = () => {
 
   if (!game) {
     return null
+  }
+
+  const onEnterGame = () => {
+    navigate(`/games/${game.id}/setup`, { state: { player: selectedPlayer } })
   }
 
   return (
@@ -107,7 +112,7 @@ export const Lobby = () => {
 
         <div className="flex gap-2 mt-4">
           <Button color="white" href="/">Exit</Button>
-          <Button disabled={selectedPlayer === null}>Enter Game</Button>
+          <Button disabled={selectedPlayer === null} onClick={onEnterGame}>Enter Game</Button>
         </div>
       </section>
     </>

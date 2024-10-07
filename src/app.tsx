@@ -8,16 +8,21 @@ import axios from "axios";
 import Home from "./pages/home";
 import Join from "./pages/join";
 import Lobby from "./pages/game/lobby";
-import Game from "./pages/game/game";
+import HouseSetup from "./pages/game/house_setup";
+import Conditions from "./pages/game/conditions";
+import GameLayout from "./pages/game/game_layout";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/join", element: <Join /> },
+  { path: "/games/:gameId/lobby", element: <Lobby /> },
   {
-    path: "/games/:gameId", children: [
+    path: "/games/:gameId",
+    element: <GameLayout />,
+    children: [
       { path: "", index: true, element: <Navigate to="lobby" replace /> },
-      { path: "lobby", element: <Lobby /> },
-      { path: "game", element: <Game /> }
+      { path: "setup", element: <HouseSetup /> },
+      { path: "conditions", element: <Conditions /> }
     ]
   },
 ]);

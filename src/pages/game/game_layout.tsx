@@ -1,10 +1,9 @@
 import { useState } from "react"
-import HouseSetup from "./house_setup"
 import Tab, { TabOption } from "./tab"
-import Conditions from "./conditions"
+import { Outlet } from "react-router-dom"
 
 
-export const Game = () => {
+export const GameLayout = () => {
   const [tab, setTab] = useState<TabOption>("setup")
 
   return (
@@ -14,11 +13,10 @@ export const Game = () => {
           <Tab tab={tab} setTab={setTab} />
         </div>
 
-        {tab === "setup" && <HouseSetup />}
-        {tab === "conditions" && <Conditions />}
+        <Outlet />
       </section>
     </>
   )
 }
 
-export default Game
+export default GameLayout
