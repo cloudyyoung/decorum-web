@@ -24,15 +24,11 @@ const Join = () => {
       navigate(`/games/${gameId}/lobby`)
       setIsGettingGame(false)
     } catch (error) {
-
-      // Display error message
       const axiosError = error as AxiosError
       const errorMessage = (axiosError.response?.data as { detail: string })?.detail || axiosError.message
       setErrorMessage(errorMessage)
       setIsErrorAlertOpen(true)
-
       setIsGettingGame(false)
-
     }
   }
 

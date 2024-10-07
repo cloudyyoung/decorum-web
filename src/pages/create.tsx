@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import { HomeModernIcon } from "@heroicons/react/24/outline"
 import { Button } from "../components/button"
 import { Field, Label } from "../components/fieldset"
@@ -7,20 +7,34 @@ import { Heading } from "../components/heading"
 import { Select } from "../components/select"
 import GameContext from "../context/game_context"
 import { useNavigate } from "react-router-dom"
+import { Alert, AlertActions, AlertDescription, AlertTitle } from "../components/alert"
 
 export const Create = () => {
   const [numberOfPlayers, setNumberOfPlayers] = useState<2 | 3 | 4>(2)
   const [scenarioDifficulty, setScenarioDifficulty] = useState<number>(20)
+  const [isCreatingGame, setIsGettingGame] = useState<boolean>(false)
+  const [errorMessage, setErrorMessage] = useState<string>("")
+  const [isErrorAlertOpen, setIsErrorAlertOpen] = useState<boolean>(false)
   const { setGame } = useContext(GameContext)
   const navigate = useNavigate()
 
   const onCreateGame = async () => {
-    const response = await axios.post("/games", {
-      num_of_players: numberOfPlayers,
-      total_difficulty_points: scenarioDifficulty,
-    })
-    setGame(response.data)
-    navigate(`/games/${response.data.id}/lobby`)
+    try {
+      setIsGettingGame(true)
+      const response = await axios.post("/games", {
+        num_of_players: numberOfPlayers,
+        total_difficulty_points: scenarioDifficulty,
+      })
+      setGame(response.data)
+      navigate(`/games/${response.data.id}/lobby`)
+      setIsGettingGame(false)
+    } catch (error) {
+      const axiosError = error as AxiosError
+      const errorMessage = (axiosError.response?.data as { detail: string })?.detail || axiosError.message
+      setErrorMessage(errorMessage)
+      setIsErrorAlertOpen(true)
+      setIsGettingGame(false)
+    }
   }
 
   return (
@@ -54,12 +68,20 @@ export const Create = () => {
       <div className="sticky bottom-0 left-0 right-0 p-4 bg-white">
         <div className="flex gap-2 justify-between max-w-screen-sm mx-auto">
           <Button plain href="/">Back</Button>
-          <Button onClick={onCreateGame}>
+          <Button onClick={onCreateGame} disabled={isCreatingGame}>
             Create Game
             <HomeModernIcon />
           </Button>
         </div>
       </div>
+
+      <Alert open={isErrorAlertOpen} onClose={setIsErrorAlertOpen}>
+        <AlertTitle>Failed to join the game</AlertTitle>
+        <AlertDescription>{errorMessage}</AlertDescription>
+        <AlertActions>
+          <Button onClick={() => setIsErrorAlertOpen(false)}>Okay</Button>
+        </AlertActions>
+      </Alert>
     </>
   )
 }
