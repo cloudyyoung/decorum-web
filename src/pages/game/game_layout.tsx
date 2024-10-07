@@ -14,7 +14,7 @@ export const GameLayout = () => {
   })
 
   useEffect(() => {
-    navigate(tab)
+    navigate(tab, { replace: true })
   }, [tab, navigate])
 
   return (

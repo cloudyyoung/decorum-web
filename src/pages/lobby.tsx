@@ -100,10 +100,11 @@ export const Lobby = () => {
         <div className="mt-6">
           <Subheading>Select your player</Subheading>
           <div className="flex gap-x-2 mt-2">
-            <PlayerButton player={1} isSelected={selectedPlayer === 1} setSelectedPlayer={setSelectedPlayer} />
-            <PlayerButton player={2} isSelected={selectedPlayer === 2} setSelectedPlayer={setSelectedPlayer} />
-            <PlayerButton player={3} isSelected={selectedPlayer === 3} setSelectedPlayer={setSelectedPlayer} />
-            <PlayerButton player={4} isSelected={selectedPlayer === 4} setSelectedPlayer={setSelectedPlayer} />
+            {
+              Array.from({ length: game.num_of_players }).map((_, index) => (
+                <PlayerButton key={index} player={index + 1} isSelected={selectedPlayer === index + 1} setSelectedPlayer={setSelectedPlayer} />
+              ))
+            }
           </div>
         </div>
 
