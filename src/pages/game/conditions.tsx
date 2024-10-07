@@ -13,7 +13,7 @@ export const Conditions = () => {
         <Heading>Conditions</Heading>
         <Subheading>You are Player 2</Subheading>
 
-        <article className="prose pt-4 space-y-3">
+        <article className="prose pt-4 pb-20 space-y-3">
           {conditions.map((condition, index) => (<Condition key={index} condition={condition.condition} />))}
         </article>
       </section>
