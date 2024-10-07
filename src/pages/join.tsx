@@ -5,7 +5,7 @@ import { Heading, Subheading } from "../components/heading"
 import { Input } from "../components/input"
 import { Button } from "../components/button"
 import { ArrowRightIcon } from "@heroicons/react/16/solid"
-import GameContext from "./game/context"
+import GameContext from "../context/game_context"
 
 const Join = () => {
   const navigate = useNavigate()

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import Tab, { TabOption } from "./tab"
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom"
 import { useEffectOnce } from "react-use"
-import GameContext from "./context"
+import GameContext from "../../context/game_context"
 
 export const GameLayout = () => {
   const location = useLocation()

@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { Heading, Subheading } from "../../components/heading"
-import GameContext from "./context"
+import GameContext from "../../context/game_context"
 import RoomSetup from './room_setup';
 
 export const HouseSetup = () => {

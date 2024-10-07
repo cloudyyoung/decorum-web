@@ -13,7 +13,7 @@ import { Button } from "../components/button";
 import { useEffectOnce } from "react-use";
 import axios from "axios";
 import { ArrowRightIcon } from "@heroicons/react/16/solid";
-import GameContext from "./game/context";
+import GameContext from "../context/game_context";
 
 const PLAYER_IMAGES = [P1, P2, P3, P4]
 

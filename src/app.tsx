@@ -11,7 +11,7 @@ import Lobby from "./pages/lobby";
 import HouseSetup from "./pages/game/house_setup";
 import Conditions from "./pages/game/conditions";
 import GameLayout from "./pages/game/game_layout";
-import { GameContextProvider } from "./pages/game/context";
+import { GameContextProvider } from "./context/game_context";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },

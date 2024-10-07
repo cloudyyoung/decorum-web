@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode } from "react"
-import { Game } from "../../types/game"
-import { Player } from "../../types/player"
+import { Game } from "../types/game"
+import { Player } from "../types/player"
 
 export interface GameContextType {
   game: Game | undefined
