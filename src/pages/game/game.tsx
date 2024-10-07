@@ -11,9 +11,8 @@ export const Game = () => {
   return (
     <>
       <section className="">
-
         <div className="flex justify-center sticky top-0">
-          <nav aria-label="Tabs" className="isolate flex divide-x divide-gray-200 rounded-lg shadow-md w-36 my-2">
+          <nav aria-label="Tabs" className="isolate flex divide-x divide-gray-200 rounded-lg shadow-md w-36 mt-2 mb-4">
             <button
               className={clsx(
                 tab === "setup" ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700',

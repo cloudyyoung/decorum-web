@@ -52,8 +52,8 @@ export const RoomSetup = ({ name, setup }: RoomSetupProps) => {
     <>
       <div className="aspect-square relative" style={{ background: wallColor }}>
         <p className="uppercase text-center p-1 absolute top-0 w-full">{name}</p>
-        <div className="h-full flex items-center justify-center">
-          <div className="flex justify-center gap-2.5" >
+        <div className="h-full flex items-center justify-center -mb-1">
+          <div className="flex justify-center gap-3.5" >
             <RoomObject name={curio || "Empty curio"} image={curioImage} />
             <RoomObject name={wall_hanging || "Empty wall hanging"} image={wallHangingImage} />
             <RoomObject name={lamp || "Empty lamp"} image={lampImage} />
