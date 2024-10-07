@@ -9,3 +9,27 @@
 :root {
     font-size: 24px;
 }
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.animated-gradient {
+    background: linear-gradient(90deg, 
+        #EF4B55, 
+        #FFC82F, 
+        #08B14B,
+        #007EC5,
+        #EF4B55,
+        #FFC82F,
+        #08B14B
+    );
+    background-size: 300% 300%;
+    animation: gradient-animation 5s linear infinite;
+}

@@ -5,6 +5,15 @@ import { PlusIcon, ArrowUpRightIcon } from "@heroicons/react/24/outline"
 export const Home = () => {
   return (
     <>
+      <div className="sticky top-0 left-0 right-0">
+        <div className="relative">
+          <div className="absolute left-0 right-0 -top-10">
+            <div className="flex items-center justify-center h-12 w-full animated-gradient">
+            </div>
+          </div>
+        </div>
+      </div>
+
       <section className="flex items-center jusityf-center h-screen p-4">
         <div className="w-full">
           <Heading>Décorum-Gen</Heading>
