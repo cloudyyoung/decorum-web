@@ -73,6 +73,10 @@ const Conditions = () => {
     //   "condition": "The upstairs must contain at least 1 yellow object.",
     //   "difficulty_points": 3
     // },
+    {
+      "condition": "The house must contain all 4 styles and all 4 wall colors, and 4 empty slots.",
+      "difficulty_points": 3
+    },
   ]
 
   return (
