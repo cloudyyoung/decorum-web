@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { Heading, Subheading } from "../../components/heading"
+import { Heading } from "../../components/heading"
 import GameContext from "../../context/game_context"
 import RoomSetup from './room_setup';
 
@@ -12,7 +12,6 @@ export const HouseSetup = () => {
       <section className="">
         <div className="px-4">
           <Heading>Setup</Heading>
-          <Subheading>Place your starting house setup on the board</Subheading>
         </div>
 
         <div className="grid grid-rows-2 grid-cols-2 pt-3">
