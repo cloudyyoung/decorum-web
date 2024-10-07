@@ -8,12 +8,12 @@ import P3 from "/src/assets/objects/DEC-Player-3.png"
 import P4 from "/src/assets/objects/DEC-Player-4.png"
 
 import { Heading, Subheading } from "../components/heading";
-import { Text } from "../components/text";
 import { Button } from "../components/button";
 import { useEffectOnce } from "react-use";
 import axios from "axios";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import GameContext from "../context/game_context";
+import { DescriptionDetails, DescriptionList, DescriptionTerm } from "../components/description-list";
 
 const PLAYER_IMAGES = [P1, P2, P3, P4]
 
@@ -90,14 +90,25 @@ export const Lobby = () => {
         <Heading>Game Information</Heading>
         <Subheading>Share Game ID to invite your friends</Subheading>
 
-        <div>
-          <Text>Game ID: {game.id}</Text>
-          <Text>Number of players: {game.num_of_players}</Text>
-          <Text>Game difficulty: {game.total_difficulty_points}</Text>
-          <Text>Game seed: {game.seed}</Text>
-        </div>
+        <div className="mt-4">
+          <DescriptionList>
+            <DescriptionTerm>Game ID</DescriptionTerm>
+            <DescriptionDetails>{game.id}</DescriptionDetails>
 
-        <div className="mt-6">
+            <DescriptionTerm>Number of players</DescriptionTerm>
+            <DescriptionDetails>{game.num_of_players}</DescriptionDetails>
+
+            <DescriptionTerm>Game difficulty</DescriptionTerm>
+            <DescriptionDetails>{game.total_difficulty_points}</DescriptionDetails>
+
+            <DescriptionTerm>Game seed</DescriptionTerm>
+            <DescriptionDetails>{game.seed}</DescriptionDetails>
+          </DescriptionList>
+        </div>
+      </section>
+
+      <div className="sticky bottom-0 left-0 right-0 p-4 bg-white">
+        <div className="">
           <Subheading>Select your player</Subheading>
           <div className="flex gap-x-2 mt-2">
             {
@@ -107,10 +118,8 @@ export const Lobby = () => {
             }
           </div>
         </div>
-      </section>
 
-      <div className="sticky bottom-0 left-0 right-0 p-4 bg-white">
-        <div className="flex gap-2 justify-between max-w-screen-sm mx-auto">
+        <div className="flex gap-2 justify-between max-w-screen-sm mx-auto mt-4">
           <Button plain href="/">Leave</Button>
           <Button disabled={!selectedPlayer} onClick={onEnterGame}>
             Enter Game
