@@ -25,7 +25,7 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 export const App = () => {
   return (
     <>
-      <div className="container is-max-tablet">
+      <div className="max-w-screen-sm mx-auto">
         <RouterProvider router={router} />
       </div>
     </>

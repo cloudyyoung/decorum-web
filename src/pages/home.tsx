@@ -1,20 +1,20 @@
 import { useNavigate } from "react-router-dom"
+import { Heading, Subheading } from "../components/heading"
+import { Button } from "../components/button"
 
 export const Home = () => {
   const navigate = useNavigate()
   const onJoinGame = () => navigate("/join")
 
   return (
-    <section className="hero is-info is-fullheight">
-      <div className="hero-body">
-        <div className="">
-          <p className="title is-size-2-touch barlow-condensed-bold">Décorum-Gen</p>
-          <p className="subtitle biorhyme-400">An unofficial level generator for the board game</p>
+    <section className="flex items-center jusityf-center h-screen p-4">
+      <div>
+        <Heading>Décorum-Gen</Heading>
+        <Subheading>An unofficial level generator for the board game</Subheading>
 
-          <div className="buttons are-medium">
-            <button className="button is-white">Create game</button>
-            <button className="button is-white" onClick={onJoinGame}>Join game</button>
-          </div>
+        <div className="flex gap-2 mt-6">
+          <Button>Create game</Button>
+          <Button color="white" onClick={onJoinGame}>Join game</Button>
         </div>
       </div>
     </section>
