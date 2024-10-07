@@ -9,8 +9,3 @@
 :root {
     font-size: 24px;
 }
-
-body, input, button {
-    font-family: "Barlow Condensed", sans-serif;
-    font-weight: 400;
-}

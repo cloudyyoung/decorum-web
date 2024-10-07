@@ -84,7 +84,7 @@ const Conditions = () => {
         <Heading>Conditions</Heading>
         <Subheading>You are Player 2</Subheading>
 
-        <article className="prose pt-4 space-y-4">
+        <article className="prose pt-4 space-y-3">
           {conditions.map((condition, index) => (<Condition key={index} condition={condition.condition} />))}
         </article>
       </section>

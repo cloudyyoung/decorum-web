@@ -122,7 +122,7 @@ export const Condition = ({ condition }: ConditionProps) => {
 
   return (
     <>
-      <p className="biorhyme-300 text-xs leading-5">
+      <p className="font-serif text-[0.74rem] leading-5">
         {parts}
       </p>
     </>

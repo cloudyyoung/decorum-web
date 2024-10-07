@@ -13,6 +13,10 @@ export default {
         player4: '#EF4B55',
       }
     },
+    fontFamily: {
+      sans: ['Barlow Condensed', 'sans-serif'],
+      serif: ['BioRhyme', 'serif'],
+    },
   },
   plugins: [],
 }
