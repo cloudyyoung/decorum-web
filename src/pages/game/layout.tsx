@@ -12,13 +12,23 @@ export const GameLayout = () => {
   const [tab, setTab] = useState<TabOption>("setup")
 
   useEffectOnce(() => {
+    if (!game || !player) {
+      navigate(`/games/${gameId}/lobby`, { replace: true })
+      return
+    } else if (!gameId) {
+      navigate("/join", { replace: true })
+      return
+    }
+
     const currentPath = location.pathname.split("/").pop()
-    setTab(currentPath as TabOption)
+    if (currentPath && currentPath in ["setup", "conditions"]) {
+      setTab(currentPath as TabOption)
+    }
   })
 
   useEffect(() => {
-    navigate(tab, { replace: true })
-  }, [tab, navigate])
+    navigate(`/games/${gameId}/${tab}`, { replace: true })
+  }, [tab, navigate, gameId])
 
   if (!gameId) {
     navigate("/join", { replace: true })

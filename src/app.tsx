@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     path: "/games/:gameId",
     element: <GameLayout />,
     children: [
-      { path: "", index: true, element: <Navigate to="lobby" replace /> },
+      { path: "", index: true, element: <Navigate to="/join" replace /> },
       { path: "setup", element: <HouseSetup /> },
       { path: "conditions", element: <Conditions /> }
     ]
