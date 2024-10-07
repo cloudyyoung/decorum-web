@@ -40,10 +40,10 @@ export const Create = () => {
 
           <Field>
             <Label>Scenario Difficulty</Label>
-            <Select name="scenario-difficulty" value={scenarioDifficulty}>
+            <Select name="scenario-difficulty" value={scenarioDifficulty} onChange={(e) => setScenarioDifficulty(Number(e.target.value))}>
               {
                 Array.from({ length: 67 }, (_, i) => i + 4).map((difficulty) => (
-                  <option key={difficulty} value={difficulty} onClick={() => setScenarioDifficulty(difficulty)}>{difficulty}</option>
+                  <option key={difficulty} value={difficulty}>{difficulty}</option>
                 ))
               }
             </Select>
