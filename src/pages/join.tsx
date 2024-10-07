@@ -18,7 +18,7 @@ const Join = () => {
       setIsGettingGame(true)
       const response = await axios.get(`/games/${gameId}`)
       setGameIdLocal(gameId)
-      navigate("/lobby", { state: response.data })
+      navigate(`/lobby/${gameId}`, { state: response.data })
       setIsGettingGame(false)
     } catch (error) {
       console.error(error)

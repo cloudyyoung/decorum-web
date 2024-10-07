@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import clsx from 'clsx'
 
 import P1 from "/src/assets/objects/DEC-Player-1.png"
@@ -10,6 +10,8 @@ import P4 from "/src/assets/objects/DEC-Player-4.png"
 import { Heading, Subheading } from "../components/heading";
 import { Text } from "../components/text";
 import { Button } from "../components/button";
+import { useEffectOnce } from "react-use";
+import axios from "axios";
 
 const PLAYER_IMAGES = [P1, P2, P3, P4]
 
@@ -52,10 +54,27 @@ const PlayerButton = ({ player, isSelected, setSelectedPlayer }: PlayerButtonPro
 export const Lobby = () => {
   const navigate = useNavigate()
   const location = useLocation();
+  const { gameId } = useParams();
   const [selectedPlayer, setSelectedPlayer] = useState<number | null>(null)
+  const [game, setGame] = useState(null)
 
   const { state } = location;
-  const game = state
+
+  useEffectOnce(() => {
+    if (state) {
+      setGame(state)
+    } else {
+      const fetch = async () => {
+        const response = await axios.get(`/games/${gameId}`)
+        setGame(response.data)
+      }
+      fetch()
+    }
+  })
+
+  if (!game) {
+    return null
+  }
 
   const onExit = () => navigate("/")
 

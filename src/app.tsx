@@ -12,7 +12,7 @@ import Game from "./pages/game/game";
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/join", element: <Join /> },
-  { path: "/lobby", element: <Lobby /> },
+  { path: "/lobby/:gameId", element: <Lobby /> },
   { path: "/game", element: <Game /> },
 ]);
 
