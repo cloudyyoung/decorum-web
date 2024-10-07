@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { Heading, Subheading } from "../components/heading"
 import { Input } from "../components/input"
 import { Button } from "../components/button"
-import { ArrowUpRightIcon } from "@heroicons/react/16/solid"
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline"
 import GameContext from "../context/game_context"
 import { Alert, AlertActions, AlertDescription, AlertTitle } from "../components/alert"
 
@@ -53,8 +53,8 @@ const Join = () => {
             />
           </div>
 
-          <div className="flex gap-2 mt-4  justify-between">
-            <Button color="white" disabled={isGettingGame} href="/">Return</Button>
+          <div className="flex gap-2 mt-4 justify-between">
+            <Button plain disabled={isGettingGame} href="/">Back</Button>
             <Button disabled={gameId === "" || isGettingGame} onClick={onEnterGame}>
               Join Game
               <ArrowUpRightIcon />

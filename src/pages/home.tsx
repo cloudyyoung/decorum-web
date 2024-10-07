@@ -1,6 +1,6 @@
 import { Heading, Subheading } from "../components/heading"
 import { Button } from "../components/button"
-import { PlusIcon, ArrowUpRightIcon } from "@heroicons/react/16/solid"
+import { PlusIcon, ArrowUpRightIcon } from "@heroicons/react/24/outline"
 
 export const Home = () => {
   return (
