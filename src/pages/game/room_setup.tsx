@@ -1,21 +1,6 @@
 import { COLORS } from "../../constants"
 import { Room } from "../../types/room"
-
-import BlueAntiqueCurio from "/src/assets/blue-antique-curio.png"
-import BlueModernLamp from "/src/assets/blue-modern-lamp.png"
-import BlueRetroWallHanging from "/src/assets/blue-retro-wh.png"
-import RedRetroLamp from "/src/assets/red-retro-lamp.png"
-import RedUnusualCurio from "/src/assets/red-unusual-curio.png"
-import RedModernWallHanging from "/src/assets/red-modern-wh.png"
-import YellowAntiqueLamp from "/src/assets/yellow-antique-lamp.png"
-import YellowRetroCurio from "/src/assets/yellow-retro-curio.png"
-import YellowUnusualWallHanging from "/src/assets/yellow-unusual-wh.png"
-import GreenAntiqueWallHanging from "/src/assets/green-antique-wh.png"
-import GreenModernCuiro from "/src/assets/green-modern-curio.png"
-import GreenUnusualLamp from "/src/assets/green-unusual-lamp.png"
-import EmptyLamp from "/src/assets/empty-lamp.png"
-import EmptyCurio from "/src/assets/empty-curio.png"
-import EmptyWallHanging from "/src/assets/empty-wh.png"
+import { ASSETS } from "../../assets"
 
 export interface RoomSetupProps {
   name: string
@@ -23,26 +8,26 @@ export interface RoomSetupProps {
 }
 
 const OBJECT_IMAGES: { [key: string]: string } = {
-  "blue antique curio": BlueAntiqueCurio,
-  "blue modern lamp": BlueModernLamp,
-  "blue retro wall hanging": BlueRetroWallHanging,
-  "red retro lamp": RedRetroLamp,
-  "red unusual curio": RedUnusualCurio,
-  "red modern wall hanging": RedModernWallHanging,
-  "yellow antique lamp": YellowAntiqueLamp,
-  "yellow retro curio": YellowRetroCurio,
-  "yellow unusual wall hanging": YellowUnusualWallHanging,
-  "green antique wall hanging": GreenAntiqueWallHanging,
-  "green modern curio": GreenModernCuiro,
-  "green unusual lamp": GreenUnusualLamp,
+  "blue antique curio": ASSETS.BlueAntiqueCurio,
+  "blue modern lamp": ASSETS.BlueModernLamp,
+  "blue retro wall hanging": ASSETS.BlueRetroWallHanging,
+  "red retro lamp": ASSETS.RedRetroLamp,
+  "red unusual curio": ASSETS.RedUnusualCurio,
+  "red modern wall hanging": ASSETS.RedModernWallHanging,
+  "yellow antique lamp": ASSETS.YellowAntiqueLamp,
+  "yellow retro curio": ASSETS.YellowRetroCurio,
+  "yellow unusual wall hanging": ASSETS.YellowUnusualWallHanging,
+  "green antique wall hanging": ASSETS.GreenAntiqueWallHanging,
+  "green modern curio": ASSETS.GreenModernCuiro,
+  "green unusual lamp": ASSETS.GreenUnusualLamp,
 }
 
 export const RoomSetup = ({ name, room }: RoomSetupProps) => {
   const { wall_color, lamp, curio, wall_hanging } = room
   const wallColor = COLORS[wall_color]
-  const lampImage = lamp ? OBJECT_IMAGES[lamp] : EmptyLamp
-  const curioImage = curio ? OBJECT_IMAGES[curio] : EmptyCurio
-  const wallHangingImage = wall_hanging ? OBJECT_IMAGES[wall_hanging] : EmptyWallHanging
+  const lampImage = lamp ? OBJECT_IMAGES[lamp] : ASSETS.EmptyLamp
+  const curioImage = curio ? OBJECT_IMAGES[curio] : ASSETS.EmptyCurio
+  const wallHangingImage = wall_hanging ? OBJECT_IMAGES[wall_hanging] : ASSETS.EmptyWallHanging
 
   return (
     <>

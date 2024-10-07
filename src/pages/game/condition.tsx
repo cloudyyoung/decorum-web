@@ -1,32 +1,7 @@
 import { ReactNode } from "react"
 
 import { COLORS } from "../../constants"
-
-import Antique from "/src/assets/antique.png"
-import Modern from "/src/assets/modern.png"
-import Retro from "/src/assets/retro.png"
-import Unusual from "/src/assets/unusual.png"
-import Bathroom from "/src/assets/bathroom.png"
-import Bedroom from "/src/assets/bedroom.png"
-import Kitchen from "/src/assets/kitchen.png"
-import LivingRoom from "/src/assets/living-room.png"
-import CoolColors from "/src/assets/cool-colors.png"
-import WarmColors from "/src/assets/warm-colors.png"
-import Curio from "/src/assets/curio.png"
-import Lamp from "/src/assets/lamp.png"
-import WallHanging from "/src/assets/wh.png"
-import DiagonalUp from "/src/assets/diagonal-up.png"
-import DiagonalDown from "/src/assets/diagonal-down.png"
-import Upstairs from "/src/assets/upstairs.png"
-import Downstairs from "/src/assets/downstairs.png"
-import LeftSide from "/src/assets/left-side.png"
-import RightSide from "/src/assets/right-side.png"
-import EmptySlot from "/src/assets/empty-slot.png"
-import PaintAny from "/src/assets/paint-any.png"
-import PaintBlue from "/src/assets/paint-blue.png"
-import PaintGreen from "/src/assets/paint-green.png"
-import PaintRed from "/src/assets/paint-red.png"
-import PaintYellow from "/src/assets/paint-yellow.png"
+import { ASSETS } from "../../assets"
 
 
 const ConditionIcon = ({ image, name }: { image: string, name: string }) => {
@@ -100,82 +75,82 @@ interface KeywordDecorations {
 }
 
 const KEYWORD_DECORATIONS: KeywordDecorations = {
-  "antique": <ConditionIcon image={Antique} name="antique" />,
-  "modern": <ConditionIcon image={Modern} name="modern" />,
-  "retro": <ConditionIcon image={Retro} name="retro" />,
-  "unusual": <ConditionIcon image={Unusual} name="unusual" />,
-  "bathroom": <ConditionIcon image={Bathroom} name="bathroom" />,
-  "bedroom": <ConditionIcon image={Bedroom} name="bedroom" />,
-  "kitchen": <ConditionIcon image={Kitchen} name="kitchen" />,
-  "living room": <ConditionIcon image={LivingRoom} name="living room" />,
-  "cool colors": <ConditionIcon image={CoolColors} name="cool colors" />,
-  "warm colors": <ConditionIcon image={WarmColors} name="warm colors" />,
-  "curio": <ConditionIcon image={Curio} name="curio" />,
-  "lamp": <ConditionIcon image={Lamp} name="lamp" />,
-  "wall hanging": <ConditionIcon image={WallHanging} name="wall hanging" />,
-  "diagonal up": <ConditionIcon image={DiagonalUp} name="diagonal up" />,
-  "diagonal down": <ConditionIcon image={DiagonalDown} name="diagonal down" />,
-  "upstairs": <ConditionIcon image={Upstairs} name="upstairs" />,
-  "downstairs": <ConditionIcon image={Downstairs} name="downstairs" />,
-  "left side": <ConditionIcon image={LeftSide} name="left side" />,
-  "right side": <ConditionIcon image={RightSide} name="right side" />,
-  "empty slots": <ConditionIcon image={EmptySlot} name="empty slots" />,
-  "empty slot": <ConditionIcon image={EmptySlot} name="empty slot" />,
-  "paint any": <ConditionIcon image={PaintAny} name="paint any" />,
-  "paint blue": <ConditionIcon image={PaintBlue} name="paint blue" />,
-  "paint green": <ConditionIcon image={PaintGreen} name="paint green" />,
-  "paint red": <ConditionIcon image={PaintRed} name="paint red" />,
-  "paint yellow": <ConditionIcon image={PaintYellow} name="paint yellow" />,
+  "antique": <ConditionIcon image={ASSETS.Antique} name="antique" />,
+  "modern": <ConditionIcon image={ASSETS.Modern} name="modern" />,
+  "retro": <ConditionIcon image={ASSETS.Retro} name="retro" />,
+  "unusual": <ConditionIcon image={ASSETS.Unusual} name="unusual" />,
+  "bathroom": <ConditionIcon image={ASSETS.Bathroom} name="bathroom" />,
+  "bedroom": <ConditionIcon image={ASSETS.Bedroom} name="bedroom" />,
+  "kitchen": <ConditionIcon image={ASSETS.Kitchen} name="kitchen" />,
+  "living room": <ConditionIcon image={ASSETS.LivingRoom} name="living room" />,
+  "cool colors": <ConditionIcon image={ASSETS.CoolColors} name="cool colors" />,
+  "warm colors": <ConditionIcon image={ASSETS.WarmColors} name="warm colors" />,
+  "curio": <ConditionIcon image={ASSETS.Curio} name="curio" />,
+  "lamp": <ConditionIcon image={ASSETS.Lamp} name="lamp" />,
+  "wall hanging": <ConditionIcon image={ASSETS.WallHanging} name="wall hanging" />,
+  "diagonal up": <ConditionIcon image={ASSETS.DiagonalUp} name="diagonal up" />,
+  "diagonal down": <ConditionIcon image={ASSETS.DiagonalDown} name="diagonal down" />,
+  "upstairs": <ConditionIcon image={ASSETS.Upstairs} name="upstairs" />,
+  "downstairs": <ConditionIcon image={ASSETS.Downstairs} name="downstairs" />,
+  "left side": <ConditionIcon image={ASSETS.LeftSide} name="left side" />,
+  "right side": <ConditionIcon image={ASSETS.RightSide} name="right side" />,
+  "empty slots": <ConditionIcon image={ASSETS.EmptySlot} name="empty slots" />,
+  "empty slot": <ConditionIcon image={ASSETS.EmptySlot} name="empty slot" />,
+  "paint any": <ConditionIcon image={ASSETS.PaintAny} name="paint any" />,
+  "paint blue": <ConditionIcon image={ASSETS.PaintBlue} name="paint blue" />,
+  "paint green": <ConditionIcon image={ASSETS.PaintGreen} name="paint green" />,
+  "paint red": <ConditionIcon image={ASSETS.PaintRed} name="paint red" />,
+  "paint yellow": <ConditionIcon image={ASSETS.PaintYellow} name="paint yellow" />,
   "each floor": (
     <>
       <span>(</span>
-      <ConditionIcon image={Upstairs} name="upstairs" />
+      <ConditionIcon image={ASSETS.Upstairs} name="upstairs" />
       <span> & </span>
-      <ConditionIcon image={Downstairs} name="downstairs" />
+      <ConditionIcon image={ASSETS.Downstairs} name="downstairs" />
       <span>)</span>
     </>
   ),
   "all 4 styles": (
     <>
       <span>(</span>
-      <ConditionIcon image={Modern} name="modern" />
-      <ConditionIcon image={Antique} name="antique" />
-      <ConditionIcon image={Retro} name="retro" />
-      <ConditionIcon image={Unusual} name="unusual" />
+      <ConditionIcon image={ASSETS.Modern} name="modern" />
+      <ConditionIcon image={ASSETS.Antique} name="antique" />
+      <ConditionIcon image={ASSETS.Retro} name="retro" />
+      <ConditionIcon image={ASSETS.Unusual} name="unusual" />
       <span>)</span>
     </>
   ),
   "all 4 wall colors": (
     <>
-      <ConditionIcon image={PaintRed} name="red paint" />
-      <ConditionIcon image={PaintYellow} name="yellow paint" />
-      <ConditionIcon image={PaintGreen} name="green paint" />
-      <ConditionIcon image={PaintBlue} name="blue paint" />
+      <ConditionIcon image={ASSETS.PaintRed} name="red paint" />
+      <ConditionIcon image={ASSETS.PaintYellow} name="yellow paint" />
+      <ConditionIcon image={ASSETS.PaintGreen} name="green paint" />
+      <ConditionIcon image={ASSETS.PaintBlue} name="blue paint" />
     </>
   ),
   "all 4 wall hangings": (
     <>
-      <ConditionIcon image={WallHanging} name="wall hanging" />
+      <ConditionIcon image={ASSETS.WallHanging} name="wall hanging" />
     </>
   ),
   "each object type": (
     <>
       <span>(</span>
-      <ConditionIcon image={WallHanging} name="wall hanging" />
+      <ConditionIcon image={ASSETS.WallHanging} name="wall hanging" />
       <span>, </span>
-      <ConditionIcon image={Lamp} name="lamp" />
+      <ConditionIcon image={ASSETS.Lamp} name="lamp" />
       <span>, or </span>
-      <ConditionIcon image={Curio} name="curio" />
+      <ConditionIcon image={ASSETS.Curio} name="curio" />
       <span>)</span>
     </>
   ),
   "painted each color": (
     <>
       <span>(</span>
-      <ConditionIcon image={PaintRed} name="red paint" />
-      <ConditionIcon image={PaintYellow} name="yellow paint" />
-      <ConditionIcon image={PaintGreen} name="green paint" />
-      <ConditionIcon image={PaintBlue} name="blue paint" />
+      <ConditionIcon image={ASSETS.PaintRed} name="red paint" />
+      <ConditionIcon image={ASSETS.PaintYellow} name="yellow paint" />
+      <ConditionIcon image={ASSETS.PaintGreen} name="green paint" />
+      <ConditionIcon image={ASSETS.PaintBlue} name="blue paint" />
       <span>)</span>
     </>
   )
