@@ -10,7 +10,7 @@ import Join from "./pages/join";
 import Lobby from "./pages/lobby";
 import HouseSetup from "./pages/game/house_setup";
 import Conditions from "./pages/game/conditions";
-import GameLayout from "./pages/game/game_layout";
+import GameLayout from "./pages/game/layout";
 import { GameContextProvider } from "./context/game_context";
 
 const router = createBrowserRouter([
