@@ -1,6 +1,8 @@
 import { useState } from "react"
 import HouseSetup from "./house_setup"
 import Condition from "./condition"
+import clsx from "clsx"
+import { Heading, Subheading } from "../../components/heading"
 
 
 export const Game = () => {
@@ -9,11 +11,42 @@ export const Game = () => {
   return (
     <>
       <section className="">
-        <div className="tabs is-centered is-large">
-          <ul>
-            <li className={`${tab === "setup" && "is-active"}`} onClick={() => setTab("setup")}><a>Setup</a></li>
-            <li className={`${tab === "conditions" && "is-active"}`} onClick={() => setTab("conditions")}><a>Conditions</a></li>
-          </ul>
+
+        <div className="flex justify-center sticky top-0">
+          <nav aria-label="Tabs" className="isolate flex divide-x divide-gray-200 rounded-lg shadow-md w-36 my-2">
+            <button
+              className={clsx(
+                tab === "setup" ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700',
+                'rounded-l-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-1.5 text-center text-sm font-medium hover:bg-gray-50 focus:z-10',
+              )}
+              onClick={() => setTab("setup")}
+            >
+              <span>Setup</span>
+              <span
+                aria-hidden="true"
+                className={clsx(
+                  tab === "setup" ? 'bg-player1' : 'bg-transparent',
+                  'absolute inset-x-0 bottom-0 h-0.5',
+                )}
+              />
+            </button>
+            <button
+              className={clsx(
+                tab === "conditions" ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700',
+                'rounded-r-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-1.5 text-center text-sm font-medium hover:bg-gray-50 focus:z-10',
+              )}
+              onClick={() => setTab("conditions")}
+            >
+              <span>Conditions</span>
+              <span
+                aria-hidden="true"
+                className={clsx(
+                  tab === "conditions" ? 'bg-player1' : 'bg-transparent',
+                  'absolute inset-x-0 bottom-0 h-0.5',
+                )}
+              />
+            </button>
+          </nav>
         </div>
 
         {tab === "setup" && <HouseSetup />}
@@ -73,21 +106,21 @@ const Conditions = () => {
     //   "condition": "The upstairs must contain at least 1 yellow object.",
     //   "difficulty_points": 3
     // },
-    {
-      "condition": "The house must contain all 4 styles and all 4 wall colors, and 4 empty slots.",
-      "difficulty_points": 3
-    },
+    // {
+    //   "condition": "The house must contain all 4 styles and all 4 wall colors, and 4 empty slots.",
+    //   "difficulty_points": 3
+    // },
   ]
 
   return (
     <>
-      <section className="section pt-0">
-        <p className="title">Conditions</p>
-        <p className="subtitle">You are Player 2</p>
+      <section className="section px-4">
+        <Heading>Conditions</Heading>
+        <Subheading>You are Player 2</Subheading>
 
-        <div className="">
+        <article className="prose pt-4 space-y-4">
           {conditions.map((condition, index) => (<Condition key={index} condition={condition.condition} />))}
-        </div>
+        </article>
       </section>
     </>
   )

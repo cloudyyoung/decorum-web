@@ -50,15 +50,13 @@ export const RoomSetup = ({ name, setup }: RoomSetupProps) => {
 
   return (
     <>
-      <div className="cell has-text-centered">
-        <div className="card" style={{ background: wallColor }}>
-          <p className="is-uppercase has-text-white-ter py-3">{name}</p>
-          <div className="fixed-grid has-3-cols p-4 pb-6" >
-            <div className="grid">
-              <RoomObject name={curio || "Empty curio"} image={curioImage} />
-              <RoomObject name={wall_hanging || "Empty wall hanging"} image={wallHangingImage} />
-              <RoomObject name={lamp || "Empty lamp"} image={lampImage} />
-            </div>
+      <div className="aspect-square relative" style={{ background: wallColor }}>
+        <p className="uppercase text-center p-1 absolute top-0 w-full">{name}</p>
+        <div className="h-full flex items-center justify-center">
+          <div className="flex justify-center gap-2.5" >
+            <RoomObject name={curio || "Empty curio"} image={curioImage} />
+            <RoomObject name={wall_hanging || "Empty wall hanging"} image={wallHangingImage} />
+            <RoomObject name={lamp || "Empty lamp"} image={lampImage} />
           </div>
         </div>
       </div>
@@ -73,9 +71,7 @@ interface RoomObjectProps {
 
 const RoomObject = ({ name, image }: RoomObjectProps) => {
   return (
-    <div className="cell" style={{ display: "flex", justifyContent: "center" }}>
-      <img src={image} alt={name} className="image" style={{ height: "2.6rem" }} />
-    </div>
+    <img src={image} alt={name} className="h-8" />
   )
 }
 

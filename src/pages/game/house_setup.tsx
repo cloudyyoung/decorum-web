@@ -1,3 +1,4 @@
+import { Heading, Subheading } from "../../components/heading"
 import RoomSetup from "./room_setup"
 
 export const HouseSetup = () => {
@@ -30,17 +31,17 @@ export const HouseSetup = () => {
 
   return (
     <>
-      <section className="section pt-0">
-        <p className="title">Setup</p>
-        <p className="subtitle">Place your starting house setup on the board</p>
+      <section className="">
+        <div className="px-4">
+          <Heading>Setup</Heading>
+          <Subheading>Place your starting house setup on the board</Subheading>
+        </div>
 
-        <div className="fixed-grid has-2-cols">
-          <div className="grid">
-            <RoomSetup name="Bathroom" setup={house["bathroom"]} />
-            <RoomSetup name="Bedroom" setup={house["bedroom"]} />
-            <RoomSetup name="Living Room" setup={house["living_room"]} />
-            <RoomSetup name="Kitchen" setup={house["kitchen"]} />
-          </div>
+        <div className="grid grid-rows-2 grid-cols-2 pt-3">
+          <RoomSetup name="Bathroom" setup={house["bathroom"]} />
+          <RoomSetup name="Bedroom" setup={house["bedroom"]} />
+          <RoomSetup name="Living Room" setup={house["living_room"]} />
+          <RoomSetup name="Kitchen" setup={house["kitchen"]} />
         </div>
       </section>
     </>

@@ -30,7 +30,7 @@ import PaintYellow from "/src/assets/paint-yellow.png"
 
 
 const ConditionIcon = ({ image, name }: { image: string, name: string }) => {
-  return <img src={image} alt={name} style={{ height: "1.5rem", marginBottom: "-0.42rem", marginLeft: "0.3rem" }} />
+  return <img src={image} alt={name} className="h-4 inline ml-1" />
 }
 
 
@@ -122,7 +122,7 @@ export const Condition = ({ condition }: ConditionProps) => {
 
   return (
     <>
-      <p className="biorhyme-400 is-size-6-touch" style={{ lineHeight: "2.2rem", marginBottom: "1rem" }}>
+      <p className="biorhyme-300 text-xs leading-5">
         {parts}
       </p>
     </>
