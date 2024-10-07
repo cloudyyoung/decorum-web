@@ -2,6 +2,9 @@ import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useLocalStorage } from "react-use"
+import { Heading, Subheading } from "../components/heading"
+import { Input } from "../components/input"
+import { Button } from "../components/button"
 
 const Join = () => {
   const navigate = useNavigate()
@@ -24,23 +27,25 @@ const Join = () => {
 
   return (
     <>
-      <section className="section">
-        <p className="title">Join a game</p>
-        <p className="subtitle">Enter the Game ID to join</p>
+      <section className="flex items-center jusityf-center h-screen p-4">
+        <div className="w-full">
+          <Heading>Join a game</Heading>
+          <Subheading>Enter the Game ID to join</Subheading>
 
-        <div className="my-6">
-          <input
-            className="input is-info is-large has-text-centered"
-            type="text"
-            placeholder="Info input"
-            value={gameId}
-            onChange={(e) => setGameId(e.target.value)}
-          />
-        </div>
+          <div className="mt-4">
+            <Input
+              className="text-center w-full"
+              type="text"
+              placeholder="Game ID"
+              value={gameId}
+              onChange={(e) => setGameId(e.target.value)}
+            />
+          </div>
 
-        <div className="mt-6 buttons">
-          <button className="button is-medium is-fullwidth is-text" disabled={isGettingGame} onClick={onReturn}>Return</button>
-          <button className={`button is-info is-large is-fullwidth ${isGettingGame && 'is-loading'}`} disabled={gameId === ""} onClick={onEnterGame}>Enter Game</button>
+          <div className="flex gap-2 mt-4">
+            <Button color="white" disabled={isGettingGame} onClick={onReturn}>Return</Button>
+            <Button disabled={gameId === "" || isGettingGame} onClick={onEnterGame}>Enter Game</Button>
+          </div>
         </div>
       </section>
     </>

@@ -8,7 +8,7 @@ export const Home = () => {
 
   return (
     <section className="flex items-center jusityf-center h-screen p-4">
-      <div>
+      <div className="w-full">
         <Heading>Décorum-Gen</Heading>
         <Subheading>An unofficial level generator for the board game</Subheading>
 

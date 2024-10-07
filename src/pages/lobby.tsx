@@ -1,13 +1,17 @@
 import { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom";
+import clsx from 'clsx'
 
 import P1 from "/src/assets/objects/DEC-Player-1.png"
 import P2 from "/src/assets/objects/DEC-Player-2.png"
 import P3 from "/src/assets/objects/DEC-Player-3.png"
 import P4 from "/src/assets/objects/DEC-Player-4.png"
 
+import { Heading, Subheading } from "../components/heading";
+import { Text } from "../components/text";
+import { Button } from "../components/button";
+
 const PLAYER_IMAGES = [P1, P2, P3, P4]
-const PLAYER_COLORS = ["#FFC82F", "#08B14B", "#007EC5", "#EF4B55"]
 
 interface PlayerButtonProps {
   player: number
@@ -18,7 +22,6 @@ interface PlayerButtonProps {
 const PlayerButton = ({ player, isSelected, setSelectedPlayer }: PlayerButtonProps) => {
   const playerName = `Player ${player}`
   const playerImage = PLAYER_IMAGES[player - 1]
-  const playerColor = PLAYER_COLORS[player - 1]
 
   const onClick = () => {
     if (isSelected) {
@@ -29,11 +32,20 @@ const PlayerButton = ({ player, isSelected, setSelectedPlayer }: PlayerButtonPro
   }
 
   return (
-    <button className="button has-text-left has-text-white py-5 px-6" style={{ borderColor: playerColor, backgroundColor: isSelected ? playerColor : "transparent" }} onClick={onClick}>
-      <span className="icon is-small">
-        <img src={playerImage} alt={playerName} />
-      </span>
-    </button>
+    <div className="col-span-1 w-full">
+      <button
+        className={clsx(
+          "w-full flex justify-center items-center p-2 rounded-lg shadow outline transition-all",
+          player === 1 && isSelected && "bg-player1", player === 1 && "outline-player1",
+          player === 2 && isSelected && "bg-player2", player === 2 && "outline-player2",
+          player === 3 && isSelected && "bg-player3", player === 3 && "outline-player3",
+          player === 4 && isSelected && "bg-player4", player === 4 && "outline-player4",
+        )}
+        onClick={onClick}
+      >
+        <img src={playerImage} alt={playerName} className="h-10" />
+      </button>
+    </div>
   )
 }
 
@@ -50,19 +62,19 @@ export const Lobby = () => {
   return (
     <>
       <section className="section">
-        <p className="title">Game Information</p>
-        <p className="subtitle">Share Game ID to invite your friends</p>
+        <Heading>Game Information</Heading>
+        <Subheading>Share Game ID to invite your friends</Subheading>
 
-        <div className="">
-          <p className="">Game ID: {game.id}</p>
-          <p className="">Number of players: {game.num_of_players}</p>
-          <p className="">Game difficulty: {game.total_difficulty_points}</p>
-          <p className="">Game seed: {game.seed}</p>
+        <div>
+          <Text>Game ID: {game.id}</Text>
+          <Text>Number of players: {game.num_of_players}</Text>
+          <Text>Game difficulty: {game.total_difficulty_points}</Text>
+          <Text>Game seed: {game.seed}</Text>
         </div>
 
         <div className="mt-6">
-          <p className="is-size-4-touch has-text-weight-semibold">Select your player</p>
-          <div className="buttons are-medium mt-4">
+          <Subheading>Select your player</Subheading>
+          <div className="columns-4 gap-2 mt-2">
             <PlayerButton player={1} isSelected={selectedPlayer === 1} setSelectedPlayer={setSelectedPlayer} />
             <PlayerButton player={2} isSelected={selectedPlayer === 2} setSelectedPlayer={setSelectedPlayer} />
             <PlayerButton player={3} isSelected={selectedPlayer === 3} setSelectedPlayer={setSelectedPlayer} />
@@ -70,9 +82,9 @@ export const Lobby = () => {
           </div>
         </div>
 
-        <div className="mt-6 buttons">
-          <button className="button is-medium is-fullwidth is-text" onClick={onExit}>Exit</button>
-          <button className="button is-info is-large is-fullwidth" disabled={selectedPlayer === null}>Enter Game</button>
+        <div className="flex gap-2 mt-4">
+          <Button color="white" onClick={onExit}>Exit</Button>
+          <Button disabled={selectedPlayer === null}>Enter Game</Button>
         </div>
       </section>
     </>

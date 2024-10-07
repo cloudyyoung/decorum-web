@@ -7,7 +7,7 @@
 @tailwind utilities;
 
 :root {
-    font-size: 28px;
+    font-size: 24px;
 }
 
 body, input, button {
