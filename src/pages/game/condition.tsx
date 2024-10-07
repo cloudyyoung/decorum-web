@@ -30,7 +30,7 @@ import PaintYellow from "/src/assets/paint-yellow.png"
 
 
 const ConditionIcon = ({ image, name }: { image: string, name: string }) => {
-  return <img src={image} alt={name} className="h-4 inline ml-1" />
+  return <img src={image} alt={name} className="h-4 inline ml-1 mb-[0.08rem]" />
 }
 
 
