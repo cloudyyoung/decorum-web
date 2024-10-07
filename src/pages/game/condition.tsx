@@ -97,10 +97,10 @@ const KEYWORD_DECORATIONS: KeywordDecorations = {
   "empty slots": <ConditionIcon image={ASSETS.EmptySlot} name="empty slots" />,
   "empty slot": <ConditionIcon image={ASSETS.EmptySlot} name="empty slot" />,
   "paint any": <ConditionIcon image={ASSETS.PaintAny} name="paint any" />,
-  "paint blue": <ConditionIcon image={ASSETS.PaintBlue} name="paint blue" />,
-  "paint green": <ConditionIcon image={ASSETS.PaintGreen} name="paint green" />,
-  "paint red": <ConditionIcon image={ASSETS.PaintRed} name="paint red" />,
-  "paint yellow": <ConditionIcon image={ASSETS.PaintYellow} name="paint yellow" />,
+  "painted blue": <ConditionIcon image={ASSETS.PaintBlue} name="painted blue" />,
+  "painted green": <ConditionIcon image={ASSETS.PaintGreen} name="painted green" />,
+  "painted red": <ConditionIcon image={ASSETS.PaintRed} name="painted red" />,
+  "painted yellow": <ConditionIcon image={ASSETS.PaintYellow} name="painted yellow" />,
   "each floor": (
     <>
       <span>(</span>
@@ -128,9 +128,26 @@ const KEYWORD_DECORATIONS: KeywordDecorations = {
       <ConditionIcon image={ASSETS.PaintBlue} name="blue paint" />
     </>
   ),
+  "all 3 red objects": (
+    <>
+      <ConditionIcon image={ASSETS.RedModernWallHanging} name="red modern wall hanging" />
+      <ConditionIcon image={ASSETS.RedUnusualCurio} name="red unusual curio" />
+      <ConditionIcon image={ASSETS.RedRetroLamp} name="red retro lamp" />
+    </>
+  ),
+  "all 3 yellow objects": (
+    <>
+      <ConditionIcon image={ASSETS.YellowRetroCurio} name="yellow retro curio" />
+      <ConditionIcon image={ASSETS.YellowUnusualWallHanging} name="yellow unusual wall hanging" />
+      <ConditionIcon image={ASSETS.YellowAntiqueLamp} name="yellow antique lamp" />
+    </>
+  ),
   "all 4 wall hangings": (
     <>
-      <ConditionIcon image={ASSETS.WallHanging} name="wall hanging" />
+      <ConditionIcon image={ASSETS.RedModernWallHanging} name="red modern wall hanging" />
+      <ConditionIcon image={ASSETS.GreenAntiqueWallHanging} name="green antique wall hanging" />
+      <ConditionIcon image={ASSETS.BlueRetroWallHanging} name="blue retro wall hanging" />
+      <ConditionIcon image={ASSETS.YellowUnusualWallHanging} name="yellow unusual wall hanging" />
     </>
   ),
   "each object type": (
