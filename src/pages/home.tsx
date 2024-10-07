@@ -27,8 +27,8 @@ export const Home = () => {
         </div>
       </section>
 
-      <div className="absolute bottom-0 left-0 right-0 p-4 text-[12px] leading-[13px] italic">
-        <p className="prose break-word">
+      <div className="sticky bottom-0 left-0 right-0 p-4">
+        <p className="prose break-word italic text-[12px] leading-[13px] ">
           Disclaimer: This is not associated with the original board game, Floodgate Games, or any of its affiliates.
           Assets from the original game are used for educational purposes only, and all rights are reserved to the original creators.
           No commercial use is intended.

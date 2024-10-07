@@ -35,9 +35,15 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 
 
 export const App = () => {
+  const setVh = () => {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
+  };
+  window.addEventListener('resize', setVh);
+  setVh();
+
   return (
     <>
-      <div className="max-w-screen-sm mx-auto relative">
+      <div className="max-w-screen-sm mx-auto relative overflow-y-hidden h-[var(--vh)]">
         <GameContextProvider>
           <RouterProvider router={router} />
         </GameContextProvider>
