@@ -45,7 +45,7 @@ export const App = () => {
 
   return (
     <>
-      <div className="max-w-screen-sm mx-auto relative overflow-y-hidden h-[var(--vh)]">
+      <div className="max-w-screen-sm mx-auto">
         <GameContextProvider>
           <RouterProvider router={router} />
         </GameContextProvider>
