@@ -41,7 +41,7 @@ const Join = () => {
             />
           </div>
 
-          <div className="flex gap-2 mt-4">
+          <div className="flex gap-2 mt-4  justify-between">
             <Button color="white" disabled={isGettingGame} href="/">Return</Button>
             <Button disabled={gameId === "" || isGettingGame} onClick={onEnterGame}>Enter Game</Button>
           </div>

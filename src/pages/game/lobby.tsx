@@ -37,7 +37,7 @@ const PlayerButton = ({ player, isSelected, setSelectedPlayer }: PlayerButtonPro
     <div className="col-span-1 w-full">
       <button
         className={clsx(
-          "w-full flex justify-center items-center p-2 rounded-lg shadow outline transition-all",
+          "w-full flex justify-center items-center p-2 rounded-lg shadow outline outline-2 transition-all",
           player === 1 && isSelected && "bg-player1", player === 1 && "outline-player1",
           player === 2 && isSelected && "bg-player2", player === 2 && "outline-player2",
           player === 3 && isSelected && "bg-player3", player === 3 && "outline-player3",
@@ -89,7 +89,7 @@ export const Lobby = () => {
 
   return (
     <>
-      <section className="section">
+      <section className="p-4">
         <Heading>Game Information</Heading>
         <Subheading>Share Game ID to invite your friends</Subheading>
 
@@ -102,7 +102,7 @@ export const Lobby = () => {
 
         <div className="mt-6">
           <Subheading>Select your player</Subheading>
-          <div className="columns-4 gap-2 mt-2">
+          <div className="flex gap-x-2 mt-2">
             <PlayerButton player={1} isSelected={selectedPlayer === 1} setSelectedPlayer={setSelectedPlayer} />
             <PlayerButton player={2} isSelected={selectedPlayer === 2} setSelectedPlayer={setSelectedPlayer} />
             <PlayerButton player={3} isSelected={selectedPlayer === 3} setSelectedPlayer={setSelectedPlayer} />
@@ -110,8 +110,8 @@ export const Lobby = () => {
           </div>
         </div>
 
-        <div className="flex gap-2 mt-4">
-          <Button color="white" href="/">Exit</Button>
+        <div className="flex gap-2 mt-4 justify-between">
+          <Button color="white" href="/">Leave</Button>
           <Button disabled={selectedPlayer === null} onClick={onEnterGame}>Enter Game</Button>
         </div>
       </section>
