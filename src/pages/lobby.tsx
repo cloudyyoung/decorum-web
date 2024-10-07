@@ -63,6 +63,8 @@ export const Lobby = () => {
   const { state } = location;
 
   useEffectOnce(() => {
+    window.scrollTo(0, 0)
+
     if (state) {
       setGame(state)
     } else {
