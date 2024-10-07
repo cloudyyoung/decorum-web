@@ -46,8 +46,59 @@ export const Condition = ({ condition }: ConditionProps) => {
     </p>
   )
 }
+export default Condition
 
-const KEYWORD_IMAGES: { [key: string]: ReactNode } = {
+
+const decorateCondition = (condition: string) => {
+  const parts = []
+
+  let remainingText = condition;
+  while (remainingText.length > 0) {
+    let found = false;
+
+    for (const keyword in sortKeywords(KEYWORD_DECORATIONS)) {
+      if (remainingText.toLowerCase().startsWith(keyword)) {
+        const matchedKeyword = remainingText.substring(0, keyword.length);
+        parts.push(<span>{matchedKeyword}{KEYWORD_DECORATIONS[keyword]}</span>);
+        remainingText = remainingText.substring(keyword.length);
+        found = true;
+        break;
+      }
+    }
+
+    for (const color of Object.keys(COLORS)) {
+      if (remainingText.toLowerCase().startsWith(color)) {
+        const colorHex = COLORS[color]
+        parts.push(
+          <>
+            <span className="has-text-weight-bold" style={{ color: colorHex }}>{color}</span>
+          </>
+        );
+        remainingText = remainingText.substring(color.length);
+        found = true;
+        break;
+      }
+    }
+
+    if (!found) {
+      parts.push(remainingText.charAt(0));
+      remainingText = remainingText.substring(1);
+    }
+  }
+
+  return parts
+}
+
+const sortKeywords = (keyword_decorations: KeywordDecorations) => {
+  return Object.keys(keyword_decorations).sort((a, b) => b.length - a.length)
+}
+
+
+interface KeywordDecorations {
+  [key: string]: ReactNode
+}
+
+const KEYWORD_DECORATIONS: KeywordDecorations = {
   "antique": <ConditionIcon image={Antique} name="antique" />,
   "modern": <ConditionIcon image={Modern} name="modern" />,
   "retro": <ConditionIcon image={Retro} name="retro" />,
@@ -91,45 +142,3 @@ const KEYWORD_IMAGES: { [key: string]: ReactNode } = {
     </>
   ),
 }
-
-const decorateCondition = (condition: string) => {
-  const parts = []
-
-  let remainingText = condition;
-  while (remainingText.length > 0) {
-    let found = false;
-
-    for (const keyword in KEYWORD_IMAGES) {
-      if (remainingText.toLowerCase().startsWith(keyword)) {
-        const matchedKeyword = remainingText.substring(0, keyword.length);
-        parts.push(<span>{matchedKeyword}{KEYWORD_IMAGES[keyword]}</span>);
-        remainingText = remainingText.substring(keyword.length);
-        found = true;
-        break;
-      }
-    }
-
-    for (const color of Object.keys(COLORS)) {
-      if (remainingText.toLowerCase().startsWith(color)) {
-        const colorHex = COLORS[color]
-        parts.push(
-          <>
-            <span className="has-text-weight-bold" style={{ color: colorHex }}>{color}</span>
-          </>
-        );
-        remainingText = remainingText.substring(color.length);
-        found = true;
-        break;
-      }
-    }
-
-    if (!found) {
-      parts.push(remainingText.charAt(0));
-      remainingText = remainingText.substring(1);
-    }
-  }
-
-  return parts
-}
-
-export default Condition
