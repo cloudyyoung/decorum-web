@@ -7,9 +7,9 @@ import P2 from "/src/assets/objects/DEC-Player-2.png"
 import P3 from "/src/assets/objects/DEC-Player-3.png"
 import P4 from "/src/assets/objects/DEC-Player-4.png"
 
-import { Heading, Subheading } from "../components/heading";
-import { Text } from "../components/text";
-import { Button } from "../components/button";
+import { Heading, Subheading } from "../../components/heading";
+import { Text } from "../../components/text";
+import { Button } from "../../components/button";
 import { useEffectOnce } from "react-use";
 import axios from "axios";
 
