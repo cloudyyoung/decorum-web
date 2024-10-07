@@ -1,16 +1,26 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import axios from "axios"
+import { HomeModernIcon } from "@heroicons/react/24/outline"
 import { Button } from "../components/button"
 import { Field, Label } from "../components/fieldset"
 import { Heading } from "../components/heading"
 import { Select } from "../components/select"
-import { HomeModernIcon } from "@heroicons/react/24/outline"
+import GameContext from "../context/game_context"
+import { useNavigate } from "react-router-dom"
 
 export const Create = () => {
   const [numberOfPlayers, setNumberOfPlayers] = useState<2 | 3 | 4>(2)
   const [scenarioDifficulty, setScenarioDifficulty] = useState<number>(20)
+  const { setGame } = useContext(GameContext)
+  const navigate = useNavigate()
 
-  const onCreateGame = () => {
-
+  const onCreateGame = async () => {
+    const response = await axios.post("/games", {
+      num_of_players: numberOfPlayers,
+      total_difficulty_points: scenarioDifficulty,
+    })
+    setGame(response.data)
+    navigate(`/games/${response.data.id}/lobby`)
   }
 
   return (
