@@ -37,9 +37,16 @@ export interface Player {
 export interface GameContextType {
   game: Game | undefined
   setGame: (game: Game) => void
+  player: Player | undefined
+  setPlayer: (player: Player) => void
 }
 
-const GameContext = createContext<GameContextType | undefined>(undefined)
+const GameContext = createContext<GameContextType>({
+  game: undefined,
+  setGame: () => {},
+  player: undefined,
+  setPlayer: () => {},
+})
 
 import { ReactNode } from "react";
 
@@ -49,9 +56,10 @@ interface GameContextProviderProps {
 
 export const GameContextProvider = ({ children }: GameContextProviderProps) => {
   const [game, setGame] = useState<Game | undefined>(undefined);
+  const [player, setPlayer] = useState<Player | undefined>(undefined);
 
   return (
-    <GameContext.Provider value={{ game, setGame }}>
+    <GameContext.Provider value={{ game, setGame, player, setPlayer }}>
       {children}
     </GameContext.Provider>
   );

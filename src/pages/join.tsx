@@ -1,24 +1,24 @@
 import axios from "axios"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useLocalStorage } from "react-use"
 import { Heading, Subheading } from "../components/heading"
 import { Input } from "../components/input"
 import { Button } from "../components/button"
 import { ArrowRightIcon } from "@heroicons/react/16/solid"
+import GameContext from "./game/context"
 
 const Join = () => {
   const navigate = useNavigate()
   const [gameId, setGameId] = useState<string>("")
   const [isGettingGame, setIsGettingGame] = useState<boolean>(false)
-  const [, setGameIdLocal] = useLocalStorage("gameId", "")
+  const { setGame } = useContext(GameContext)
 
   const onEnterGame = async () => {
     try {
       setIsGettingGame(true)
       const response = await axios.get(`/games/${gameId}`)
-      setGameIdLocal(gameId)
-      navigate(`/games/${gameId}/lobby`, { state: response.data })
+      setGame(response.data)
+      navigate(`/games/${gameId}/lobby`)
       setIsGettingGame(false)
     } catch (error) {
       console.error(error)

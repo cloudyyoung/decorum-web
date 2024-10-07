@@ -11,6 +11,7 @@ import Lobby from "./pages/game/lobby";
 import HouseSetup from "./pages/game/house_setup";
 import Conditions from "./pages/game/conditions";
 import GameLayout from "./pages/game/game_layout";
+import { GameContextProvider } from "./pages/game/context";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -37,7 +38,9 @@ export const App = () => {
   return (
     <>
       <div className="max-w-screen-sm mx-auto">
-        <RouterProvider router={router} />
+        <GameContextProvider>
+          <RouterProvider router={router} />
+        </GameContextProvider>
       </div>
     </>
   )

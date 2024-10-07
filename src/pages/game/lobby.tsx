@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import clsx from 'clsx'
 
@@ -13,7 +13,7 @@ import { Button } from "../../components/button";
 import { useEffectOnce } from "react-use";
 import axios from "axios";
 import { ArrowRightIcon } from "@heroicons/react/16/solid";
-import { Game } from "./context";
+import GameContext from "./context";
 
 const PLAYER_IMAGES = [P1, P2, P3, P4]
 
@@ -58,7 +58,7 @@ export const Lobby = () => {
   const navigate = useNavigate()
   const { gameId } = useParams();
   const [selectedPlayer, setSelectedPlayer] = useState<number | undefined>(undefined)
-  const [game, setGame] = useState<Game | undefined>(undefined)
+  const { game, setGame, setPlayer } = useContext(GameContext)
 
   const { state } = location;
 
@@ -78,8 +78,10 @@ export const Lobby = () => {
     return null
   }
 
-  const onEnterGame = () => {
-    navigate(`/games/${game.id}/setup`, { state: { player: selectedPlayer } })
+  const onEnterGame = async () => {
+    const response = await axios.get(`/games/${game.id}/p${selectedPlayer}`)
+    setPlayer(response.data)
+    navigate(`/games/${game.id}/setup`)
   }
 
   return (
