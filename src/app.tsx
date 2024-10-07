@@ -7,7 +7,7 @@ import axios from "axios";
 
 import Home from "./pages/home";
 import Join from "./pages/join";
-import Lobby from "./pages/game/lobby";
+import Lobby from "./pages/lobby";
 import HouseSetup from "./pages/game/house_setup";
 import Conditions from "./pages/game/conditions";
 import GameLayout from "./pages/game/game_layout";
