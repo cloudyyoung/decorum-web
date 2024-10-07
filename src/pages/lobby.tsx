@@ -112,7 +112,7 @@ export const Lobby = () => {
       <div className="sticky bottom-0 left-0 right-0 p-4 bg-white">
         <div className="flex gap-2 justify-between max-w-screen-sm mx-auto">
           <Button color="white" href="/">Leave</Button>
-          <Button disabled={selectedPlayer === null} onClick={onEnterGame}>
+          <Button disabled={!selectedPlayer} onClick={onEnterGame}>
             Enter Game
             <ArrowRightIcon />
           </Button>
