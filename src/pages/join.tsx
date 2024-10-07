@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Heading, Subheading } from "../components/heading"
@@ -6,12 +6,15 @@ import { Input } from "../components/input"
 import { Button } from "../components/button"
 import { ArrowRightIcon } from "@heroicons/react/16/solid"
 import GameContext from "../context/game_context"
+import { Alert, AlertActions, AlertDescription, AlertTitle } from "../components/alert"
 
 const Join = () => {
   const navigate = useNavigate()
   const [gameId, setGameId] = useState<string>("")
-  const [isGettingGame, setIsGettingGame] = useState<boolean>(false)
   const { setGame } = useContext(GameContext)
+  const [isGettingGame, setIsGettingGame] = useState<boolean>(false)
+  const [errorMessage, setErrorMessage] = useState<string>("")
+  const [isErrorAlertOpen, setIsErrorAlertOpen] = useState<boolean>(false)
 
   const onEnterGame = async () => {
     try {
@@ -21,7 +24,15 @@ const Join = () => {
       navigate(`/games/${gameId}/lobby`)
       setIsGettingGame(false)
     } catch (error) {
-      console.error(error)
+
+      // Display error message
+      const axiosError = error as AxiosError
+      const errorMessage = (axiosError.response?.data as { detail: string })?.detail || axiosError.message
+      setErrorMessage(errorMessage)
+      setIsErrorAlertOpen(true)
+
+      setIsGettingGame(false)
+
     }
   }
 
@@ -50,6 +61,14 @@ const Join = () => {
             </Button>
           </div>
         </div>
+
+        <Alert open={isErrorAlertOpen} onClose={setIsErrorAlertOpen}>
+          <AlertTitle>Failed to join the game</AlertTitle>
+          <AlertDescription>{errorMessage}</AlertDescription>
+          <AlertActions>
+            <Button onClick={() => setIsErrorAlertOpen(false)}>Okay</Button>
+          </AlertActions>
+        </Alert>
       </section>
     </>
   )
