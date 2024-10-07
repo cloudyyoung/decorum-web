@@ -1,35 +1,6 @@
-import { createContext, useState } from "react"
-
-
-export interface Game {
-  id: string
-  num_of_players: number
-  total_difficulty_points: number
-  seed: string
-}
-
-export interface Room {
-  wall_color: string
-  lamp: string | null
-  curio: string | null
-  wall_hanging: string | null
-}
-
-export interface Condition {
-  condition: string
-  difficulty_points: number
-}
-
-export interface Player {
-  player_id: string
-  conditions: Condition[]
-  house: {
-    bathroom: Room
-    bedroom: Room
-    living_room: Room
-    kitchen: Room
-  }
-}
+import { createContext, useState, ReactNode } from "react"
+import { Game } from "../../types/game"
+import { Player } from "../../types/player"
 
 export interface GameContextType {
   game: Game | undefined
@@ -45,7 +16,6 @@ const GameContext = createContext<GameContextType>({
   setPlayer: () => { },
 })
 
-import { ReactNode } from "react";
 
 interface GameContextProviderProps {
   children: ReactNode;

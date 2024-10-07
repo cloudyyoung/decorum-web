@@ -1,5 +1,5 @@
 import { COLORS } from "../../constants"
-import { Room } from "./context"
+import { Room } from "../../types/room"
 
 import BlueAntiqueCurio from "/src/assets/blue-antique-curio.png"
 import BlueModernLamp from "/src/assets/blue-modern-lamp.png"
