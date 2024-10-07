@@ -5,6 +5,7 @@ import { useLocalStorage } from "react-use"
 import { Heading, Subheading } from "../components/heading"
 import { Input } from "../components/input"
 import { Button } from "../components/button"
+import { ArrowRightIcon } from "@heroicons/react/16/solid"
 
 const Join = () => {
   const navigate = useNavigate()
@@ -43,7 +44,10 @@ const Join = () => {
 
           <div className="flex gap-2 mt-4  justify-between">
             <Button color="white" disabled={isGettingGame} href="/">Return</Button>
-            <Button disabled={gameId === "" || isGettingGame} onClick={onEnterGame}>Enter Game</Button>
+            <Button disabled={gameId === "" || isGettingGame} onClick={onEnterGame}>
+              Join Game
+              <ArrowRightIcon />
+            </Button>
           </div>
         </div>
       </section>

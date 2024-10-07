@@ -12,6 +12,7 @@ import { Text } from "../../components/text";
 import { Button } from "../../components/button";
 import { useEffectOnce } from "react-use";
 import axios from "axios";
+import { ArrowRightIcon } from "@heroicons/react/16/solid";
 
 const PLAYER_IMAGES = [P1, P2, P3, P4]
 
@@ -110,9 +111,12 @@ export const Lobby = () => {
           </div>
         </div>
 
-        <div className="flex gap-2 mt-4 justify-between">
+        <div className="flex gap-2 mt-8 justify-between">
           <Button color="white" href="/">Leave</Button>
-          <Button disabled={selectedPlayer === null} onClick={onEnterGame}>Enter Game</Button>
+          <Button disabled={selectedPlayer === null} onClick={onEnterGame}>
+            Enter Game
+            <ArrowRightIcon />
+          </Button>
         </div>
       </section>
     </>
