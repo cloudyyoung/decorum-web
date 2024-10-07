@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 import { COLORS } from "../../constants"
 
 import Antique from "/src/assets/antique.png"
@@ -26,33 +28,55 @@ import PaintGreen from "/src/assets/paint-green.png"
 import PaintRed from "/src/assets/paint-red.png"
 import PaintYellow from "/src/assets/paint-yellow.png"
 
-const KEYWORD_IMAGES: { [key: string]: string } = {
-  "antique": Antique,
-  "modern": Modern,
-  "retro": Retro,
-  "unusual": Unusual,
-  "bathroom": Bathroom,
-  "bedroom": Bedroom,
-  "kitchen": Kitchen,
-  "living room": LivingRoom,
-  "cool colors": CoolColors,
-  "warm colors": WarmColors,
-  "curio": Curio,
-  "lamp": Lamp,
-  "wall hanging": WallHanging,
-  "diagonal up": DiagonalUp,
-  "diagonal down": DiagonalDown,
-  "upstairs": Upstairs,
-  "downstairs": Downstairs,
-  "left side": LeftSide,
-  "right side": RightSide,
-  "empty slot": EmptySlot,
-  "empty slots": EmptySlot,
-  "paint any": PaintAny,
-  "paint blue": PaintBlue,
-  "paint green": PaintGreen,
-  "paint red": PaintRed,
-  "paint yellow": PaintYellow,
+
+const ConditionIcon = ({ image, name }: { image: string, name: string }) => {
+  return <img src={image} alt={name} style={{ height: "1.5rem", marginBottom: "-0.42rem", marginLeft: "0.3rem" }} />
+}
+
+
+const KEYWORD_IMAGES: { [key: string]: ReactNode } = {
+  "antique": <ConditionIcon image={Antique} name="antique" />,
+  "modern": <ConditionIcon image={Modern} name="modern" />,
+  "retro": <ConditionIcon image={Retro} name="retro" />,
+  "unusual": <ConditionIcon image={Unusual} name="unusual" />,
+  "bathroom": <ConditionIcon image={Bathroom} name="bathroom" />,
+  "bedroom": <ConditionIcon image={Bedroom} name="bedroom" />,
+  "kitchen": <ConditionIcon image={Kitchen} name="kitchen" />,
+  "living room": <ConditionIcon image={LivingRoom} name="living room" />,
+  "cool colors": <ConditionIcon image={CoolColors} name="cool colors" />,
+  "warm colors": <ConditionIcon image={WarmColors} name="warm colors" />,
+  "curio": <ConditionIcon image={Curio} name="curio" />,
+  "lamp": <ConditionIcon image={Lamp} name="lamp" />,
+  "wall hanging": <ConditionIcon image={WallHanging} name="wall hanging" />,
+  "diagonal up": <ConditionIcon image={DiagonalUp} name="diagonal up" />,
+  "diagonal down": <ConditionIcon image={DiagonalDown} name="diagonal down" />,
+  "upstairs": <ConditionIcon image={Upstairs} name="upstairs" />,
+  "downstairs": <ConditionIcon image={Downstairs} name="downstairs" />,
+  "left side": <ConditionIcon image={LeftSide} name="left side" />,
+  "right side": <ConditionIcon image={RightSide} name="right side" />,
+  "empty slots": <ConditionIcon image={EmptySlot} name="empty slots" />,
+  "empty slot": <ConditionIcon image={EmptySlot} name="empty slot" />,
+  "paint any": <ConditionIcon image={PaintAny} name="paint any" />,
+  "paint blue": <ConditionIcon image={PaintBlue} name="paint blue" />,
+  "paint green": <ConditionIcon image={PaintGreen} name="paint green" />,
+  "paint red": <ConditionIcon image={PaintRed} name="paint red" />,
+  "paint yellow": <ConditionIcon image={PaintYellow} name="paint yellow" />,
+  "all 4 styles": (
+    <>
+      <ConditionIcon image={Modern} name="modern" />
+      <ConditionIcon image={Antique} name="antique" />
+      <ConditionIcon image={Retro} name="retro" />
+      <ConditionIcon image={Unusual} name="unusual" />
+    </>
+  ),
+  "all 4 wall colors": (
+    <>
+      <ConditionIcon image={PaintRed} name="red paint" />
+      <ConditionIcon image={PaintYellow} name="yellow paint" />
+      <ConditionIcon image={PaintGreen} name="green paint" />
+      <ConditionIcon image={PaintBlue} name="blue paint" />
+    </>
+  ),
 }
 
 export interface ConditionProps {
@@ -69,11 +93,7 @@ export const Condition = ({ condition }: ConditionProps) => {
     for (const keyword in KEYWORD_IMAGES) {
       if (remainingText.toLowerCase().startsWith(keyword)) {
         const matchedKeyword = remainingText.substring(0, keyword.length);
-        parts.push(
-          <>
-            {matchedKeyword} <ConditionIcon key={keyword + Math.random()} image={KEYWORD_IMAGES[keyword]} name={keyword} />
-          </>
-        );
+        parts.push(<span>{matchedKeyword}{KEYWORD_IMAGES[keyword]}</span>);
         remainingText = remainingText.substring(keyword.length);
         found = true;
         break;
@@ -102,15 +122,11 @@ export const Condition = ({ condition }: ConditionProps) => {
 
   return (
     <>
-      <p className="biorhyme-400 is-size-6-touch" style={{ lineHeight: "25px", marginBottom: "1rem" }}>
+      <p className="biorhyme-400 is-size-6-touch" style={{ lineHeight: "2.2rem", marginBottom: "1rem" }}>
         {parts}
       </p>
     </>
   )
-}
-
-const ConditionIcon = ({ image, name }: { image: string, name: string }) => {
-  return <img src={image} alt={name} style={{ height: "1.5rem", marginBottom: "-0.46rem" }} />
 }
 
 export default Condition
