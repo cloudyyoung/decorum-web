@@ -9,13 +9,10 @@ export interface Game {
 }
 
 export interface Room {
-  name: string
-  setup: {
-    wall_color: string
-    lamp: string | null
-    curio: string | null
-    wall_hanging: string | null
-  }
+  wall_color: string
+  lamp: string | null
+  curio: string | null
+  wall_hanging: string | null
 }
 
 export interface Condition {
@@ -43,9 +40,9 @@ export interface GameContextType {
 
 const GameContext = createContext<GameContextType>({
   game: undefined,
-  setGame: () => {},
+  setGame: () => { },
   player: undefined,
-  setPlayer: () => {},
+  setPlayer: () => { },
 })
 
 import { ReactNode } from "react";

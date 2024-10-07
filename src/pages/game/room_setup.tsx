@@ -17,7 +17,10 @@ import EmptyLamp from "/src/assets/empty-lamp.png"
 import EmptyCurio from "/src/assets/empty-curio.png"
 import EmptyWallHanging from "/src/assets/empty-wh.png"
 
-export type RoomSetupProps = Room
+export interface RoomSetupProps {
+  name: string
+  room: Room
+}
 
 const OBJECT_IMAGES: { [key: string]: string } = {
   "blue antique curio": BlueAntiqueCurio,
@@ -34,8 +37,8 @@ const OBJECT_IMAGES: { [key: string]: string } = {
   "green unusual lamp": GreenUnusualLamp,
 }
 
-export const RoomSetup = ({ name, setup }: RoomSetupProps) => {
-  const { wall_color, lamp, curio, wall_hanging } = setup
+export const RoomSetup = ({ name, room }: RoomSetupProps) => {
+  const { wall_color, lamp, curio, wall_hanging } = room
   const wallColor = COLORS[wall_color]
   const lampImage = lamp ? OBJECT_IMAGES[lamp] : EmptyLamp
   const curioImage = curio ? OBJECT_IMAGES[curio] : EmptyCurio
