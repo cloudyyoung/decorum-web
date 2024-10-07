@@ -27,11 +27,11 @@ export const Tab = ({ tab, setTab }: TabProps) => {
   const [playerBgColor, playerTextColor] = getPlayerColor()
 
   return (
-    <nav aria-label="Tabs" className="isolate flex divide-x divide-gray-200 rounded-lg shadow-lg w-36 my-4">
+    <nav aria-label="Tabs" className="isolate flex divide-x divide-gray-200 rounded-lg shadow-lg w-48 my-4">
       <button
         className={clsx(
           tab === "setup" ? playerBgColor : 'text-gray-600 hover:text-gray-700',
-          'rounded-l-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-1.5 text-center text-sm font-medium hover:bg-gray-50 focus:z-10',
+          'rounded-l-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-2.5 text-center text-sm font-medium hover:bg-gray-50 focus:z-10',
         )}
         onClick={() => setTab("setup")}
       >
@@ -47,7 +47,7 @@ export const Tab = ({ tab, setTab }: TabProps) => {
       <button
         className={clsx(
           tab === "conditions" ? playerBgColor : 'text-gray-600 hover:text-gray-700',
-          'rounded-r-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-1.5 text-center text-sm font-medium hover:bg-gray-50 focus:z-10',
+          'rounded-r-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-2.5 text-center text-sm font-medium hover:bg-gray-50 focus:z-10',
         )}
         onClick={() => setTab("conditions")}
       >
