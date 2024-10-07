@@ -6,6 +6,7 @@ import {
 import axios from "axios";
 
 import Home from "./pages/home";
+import Create from "./pages/create";
 import Join from "./pages/join";
 import Lobby from "./pages/lobby";
 import HouseSetup from "./pages/game/house_setup";
@@ -15,6 +16,7 @@ import { GameContextProvider } from "./context/game_context";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
+  { path: "/create", element: <Create /> },
   { path: "/join", element: <Join /> },
   { path: "/games/:gameId/lobby", element: <Lobby /> },
   {
