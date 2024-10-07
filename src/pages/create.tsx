@@ -8,10 +8,12 @@ import { Select } from "../components/select"
 import GameContext from "../context/game_context"
 import { useNavigate } from "react-router-dom"
 import { Alert, AlertActions, AlertDescription, AlertTitle } from "../components/alert"
+import { Input } from "../components/input"
 
 export const Create = () => {
   const [numberOfPlayers, setNumberOfPlayers] = useState<2 | 3 | 4>(2)
   const [scenarioDifficulty, setScenarioDifficulty] = useState<number>(20)
+  const [seed, setSeed] = useState<string>("")
   const [isCreatingGame, setIsGettingGame] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>("")
   const [isErrorAlertOpen, setIsErrorAlertOpen] = useState<boolean>(false)
@@ -24,6 +26,7 @@ export const Create = () => {
       const response = await axios.post("/games", {
         num_of_players: numberOfPlayers,
         total_difficulty_points: scenarioDifficulty,
+        seed: seed !== "" ? seed : undefined,
       })
       setGame(response.data)
       navigate(`/games/${response.data.id}/lobby`)
@@ -61,6 +64,11 @@ export const Create = () => {
                 ))
               }
             </Select>
+          </Field>
+
+          <Field>
+            <Label>Seed (Optional)</Label>
+            <Input type="text" placeholder="Seed" value={seed} onChange={(e) => setSeed(e.target.value)} />
           </Field>
         </div>
       </section>
